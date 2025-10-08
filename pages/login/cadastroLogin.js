@@ -14,9 +14,9 @@ export default function Cadastro() {
             source={require("../../assets/imagemFundo.png")}
             style={{ flex: 1 }} // Mantém o fundo cobrindo a tela inteira
         >
-                <View>
+                <View style={style.logo}>
                         <Image
-                        source={require('../../assets/logoBeira.png')} style={style.logo}
+                        source={require('../../assets/logoBeira.png')} 
                         />
                 </View>
                 <View style={style.container}>
