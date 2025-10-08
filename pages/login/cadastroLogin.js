@@ -11,15 +11,15 @@ export default function Cadastro() {
 
     return (
         <ImageBackground 
-            source={require("../../assets/imagemFundo.png")}
-            style={{ flex: 1 }} // Mantém o fundo cobrindo a tela inteira
+            source={require("../../assets/imagemFundo.png")} 
+            resizeMode="cover"
+            style={style.container}
         >
-                <View style={style.logo}>
-                        <Image
-                        source={require('../../assets/logoBeira.png')} 
-                        />
-                </View>
-                <View style={style.container}>
+                 <View style={[{justifyContent:'center'}]}>
+                      <Image source={require('../../assets/logoBeira.png')} style={style.logo} />
+                    </View>
+
+                <View>
                         <View>
                         <Image source={require('../../assets/email.png')} style={style.icon} />
                         <TextInput

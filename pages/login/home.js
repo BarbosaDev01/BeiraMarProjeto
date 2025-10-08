@@ -15,7 +15,7 @@ export default function Login() {
       style={style.container}
       resizeMode="cover"
     >
-      <View>
+      <View style={[{justifyContent:'center'}]}>
         <Image source={require('../../assets/logoBeira.png')} style={style.logo} />
       </View>
 
@@ -46,12 +46,14 @@ export default function Login() {
         <TouchableOpacity style={style.botoes}>
           <Text style={style.botaoTexto}>LOGIN</Text>
         </TouchableOpacity>
-        
-        <Button 
-        style={style.botoes} 
-        onPress={() => navigation.navigate('Cadastro')}>
-        <Text style={style.botaoTexto}>CRIAR CONTA</Text>
-        </Button>
+
+    <TouchableOpacity 
+    style={style.botoes} 
+    onPress={() => navigation.navigate('Cadastro')}
+    activeOpacity={0.7} // efeito visual ao tocar
+>
+    <Text style={style.botaoTexto}>CRIAR CONTA</Text>
+</TouchableOpacity>
         
       </View>
     </ImageBackground>
