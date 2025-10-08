@@ -1,6 +1,15 @@
 import React, { useState } from "react";
-import { View, TextInput, Image, ImageBackground } from "react-native";
+import { 
+    View, 
+    TextInput, 
+    Image, 
+    ImageBackground, 
+    TouchableOpacity, 
+    Text, 
+    ScrollView 
+} from "react-native";
 import { style } from './style';
+import { useNavigation } from '@react-navigation/native';
 
 export default function Cadastro() {
     const [email, setEmail] = useState('');
@@ -8,6 +17,7 @@ export default function Cadastro() {
     const [telefone, setTelefone] = useState('');
     const [cpf, setCpf] = useState('');
     const [criarSenha, setCriarSenha] = useState('');
+    const navigation = useNavigation();
 
     return (
         <ImageBackground 
@@ -15,69 +25,80 @@ export default function Cadastro() {
             resizeMode="cover"
             style={style.container}
         >
-                 <View style={[{justifyContent:'center'}]}>
-                      <Image source={require('../../assets/logoBeira.png')} style={style.logo} />
-                    </View>
+        
+                {/* Logo centralizada */}
+                <View style={{ justifyContent: 'center', alignItems: 'center', marginBottom: 30 }}>
+                    <Image source={require('../../assets/logoBeira.png')} style={style.logo} />
+                </View>
 
+                {/* Inputs */}
                 <View>
-                        <View>
+                    <View>
                         <Image source={require('../../assets/email.png')} style={style.icon} />
                         <TextInput
-                                placeholder="E-MAIL"
-                                value={email}
-                                onChangeText={setEmail}
-                                style={style.input}
-                                placeholderTextColor="white"
+                            placeholder="E-MAIL"
+                            value={email}
+                            onChangeText={setEmail}
+                            style={style.input}
+                            placeholderTextColor="white"
                         />
-                        </View>
+                    </View>
 
-                        <View>
+                    <View>
                         <Image source={require('../../assets/usuario.png')} style={style.icon} />
                         <TextInput
-                                placeholder="NOME DO USUÁRIO"
-                                value={nomeUsuario}
-                                onChangeText={setNomeUsuario}
-                                style={style.input}
-                                placeholderTextColor="white"
+                            placeholder="NOME DO USUÁRIO"
+                            value={nomeUsuario}
+                            onChangeText={setNomeUsuario}
+                            style={style.input}
+                            placeholderTextColor="white"
                         />
-                        </View>
+                    </View>
 
-                        <View>
+                    <View>
                         <Image source={require('../../assets/phone.png')} style={style.icon} />
                         <TextInput
-                                placeholder="Telefone"
-                                value={telefone}
-                                onChangeText={setTelefone}
-                                style={style.input}
-                                placeholderTextColor="white"
+                            placeholder="Telefone"
+                            value={telefone}
+                            onChangeText={setTelefone}
+                            style={style.input}
+                            placeholderTextColor="white"
                         />
-                        </View>
+                    </View>
 
-                        <View>
+                    <View>
                         <Image source={require('../../assets/interfaceCpf.png')} style={style.icon} />
                         <TextInput
-                                placeholder="CPF"
-                                value={cpf}
-                                onChangeText={setCpf}
-                                style={style.input}
-                                placeholderTextColor="white"
+                            placeholder="CPF"
+                            value={cpf}
+                            onChangeText={setCpf}
+                            style={style.input}
+                            placeholderTextColor="white"
                         />
-                        </View>
+                    </View>
 
-                        <View>
+                    <View>
                         <Image source={require('../../assets/senha.png')} style={style.icon} />
                         <TextInput
-                                placeholder="SENHA"
-                                value={criarSenha}
-                                onChangeText={setCriarSenha}
-                                style={style.input}
-                                placeholderTextColor="white"
-                                secureTextEntry={true}
+                            placeholder="SENHA"
+                            value={criarSenha}
+                            onChangeText={setCriarSenha}
+                            style={style.input}
+                            placeholderTextColor="white"
+                            secureTextEntry={true}
                         />
-                        </View>
+                    </View>
+
+                    {/* Botão */}
+                    <TouchableOpacity 
+                        style={style.botoes} 
+                        onPress={() => navigation.navigate('Login')}
+                        activeOpacity={0.7} 
+                    >
+                        <Text style={style.botaoTexto}>CADASTRAR</Text>
+                    </TouchableOpacity>
+
                 </View>
-                </ImageBackground>
-        
-     
+        </ImageBackground>
     );
 }
