@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, Image, TextInput, ImageBackground, TouchableOpacity } from 'react-native';
 import { style } from './style';
 import { useNavigation } from '@react-navigation/native';
-import { Button } from 'react-native-web';
+
 
 export default function Login() {
   const [usuario, setUsuario] = useState('');
@@ -40,6 +40,15 @@ export default function Login() {
           secureTextEntry
           placeholderTextColor="white"
         />
+      </View>
+
+      <View>
+         <TouchableOpacity 
+    onPress={() => navigation.navigate('RecuperarSenha')}
+    activeOpacity={0.7} 
+>
+    <Text style={style.textos}>Esqueci minha senha</Text>
+</TouchableOpacity> 
       </View>
 
       <View>

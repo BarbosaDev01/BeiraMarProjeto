@@ -72,5 +72,12 @@ botaoTexto: {
   fontFamily: 'Montserrat_700Bold',
   color: 'blue',
   textAlign: 'center',
+},
+textos: {
+  fontFamily: 'Montserrat_700Bold',
+  fontSize: 15,
+  color: 'white',
+  textAlign: 'left',
+  justifyContent: 'left'
 }
 })

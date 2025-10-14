@@ -6,6 +6,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import Login from './pages/login/home';
 import Cadastro from './pages/login/cadastroLogin';
+import RecuperarSenha from './pages/login/recuperacaoSenhaLogin';
 
 const Stack = createNativeStackNavigator();
 
@@ -18,6 +19,7 @@ export default function App() {
       >
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Cadastro" component={Cadastro} />
+         <Stack.Screen name="RecuperarSenha" component={RecuperarSenha} />
       </Stack.Navigator>
     </NavigationContainer>
   );
