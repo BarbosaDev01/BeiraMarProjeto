@@ -4,7 +4,7 @@ import { StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import Login from './pages/login/home';
+import Login from './pages/login/index';
 import Cadastro from './pages/login/cadastroLogin';
 import RecuperarSenha from './pages/login/recuperacaoSenhaLogin';
 import ConfirmarSenha from './pages/login/confirmarSenha';

@@ -4,7 +4,7 @@ import { style } from './style';
 import { useNavigation } from '@react-navigation/native';
 
 export default function ConfirmarSenha() {
-
+ const navigation = useNavigation();
   return (
     <ImageBackground
       source={require('../../assets/imagemFundo.png')}
@@ -19,7 +19,7 @@ export default function ConfirmarSenha() {
         <Text style={style.textos}>Insira o código de recuperação</Text>
      </View>
      <View>
-        <input style={style.input} placeholder='-----'></input>
+        <TextInput style={style.input} placeholder='-----'></ TextInput>
      </View>
 
      <View>

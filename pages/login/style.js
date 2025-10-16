@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native'
+import { ScrollView } from 'react-native-web'
 export const style= StyleSheet.create({
     container:{
         flex:1,
@@ -81,5 +82,18 @@ textos: {
   justifyContent: 'left',
   maxWidth: '250px',
   padding: '20px'
+},
+scrollView: {
+  container: {
+    flex: 1,
+    paddingTop: StatusBar.currentHeight,
+  },
+  scrollView: {
+    backgroundColor: 'pink',
+  },
+  text: {
+    fontSize: 42,
+    padding: 12,
+  },
 }
 })
