@@ -78,6 +78,8 @@ textos: {
   fontSize: 15,
   color: 'white',
   textAlign: 'left',
-  justifyContent: 'left'
+  justifyContent: 'left',
+  maxWidth: '250px',
+  padding: '20px'
 }
 })

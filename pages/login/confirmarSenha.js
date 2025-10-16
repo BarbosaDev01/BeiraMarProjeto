@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, Image, TextInput, ImageBackground, TouchableOpacity } from 'react-native';
 import { style } from './style';
+import { useNavigation } from '@react-navigation/native';
 
 export default function ConfirmarSenha() {
 
@@ -22,9 +23,13 @@ export default function ConfirmarSenha() {
      </View>
 
      <View>
-        <button style={style.botoes}>
+        <TouchableOpacity 
+          onPress={() => navigation.navigate('Login')}
+          activeOpacity={0.7} 
+          style = {style.botoes}
+      >
             <Text style={style.botaoTexto}>Enviar código</Text>
-        </button>
+        </TouchableOpacity>
      </View>
     </ImageBackground>
   );
