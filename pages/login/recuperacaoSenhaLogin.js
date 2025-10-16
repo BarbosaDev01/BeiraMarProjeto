@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import { View, Text, Image, TextInput, ImageBackground, TouchableOpacity } from 'react-native';
 import { style } from './style';
+import { useNavigation } from '@react-navigation/native';
 
 export default function RecuperarSenha() {
   const [email, setEmail] = useState('');
+   const navigation = useNavigation();
+  
 
   return (
     <ImageBackground
@@ -17,7 +20,7 @@ export default function RecuperarSenha() {
           style={style.logo}
         />
 
-        <Text style={{ color: 'white', textAlign: 'center', marginVertical: 15 }}>
+        <Text style={style.textos}>
           Insira seu e-mail ou número de recuperação, e enviaremos um código de 6 dígitos para a criação de uma nova senha.
         </Text>
 
@@ -29,7 +32,11 @@ export default function RecuperarSenha() {
           onChangeText={setEmail}
         />
 
-        <TouchableOpacity style={style.botoes} onPress={() => console.log('Enviando código...')}>
+          <TouchableOpacity 
+            onPress={() => navigation.navigate('ConfirmarSenha')}
+            activeOpacity={0.7} 
+            style={style.botoes}
+        >
           <Text style={style.botaoTexto}>ENVIAR</Text>
         </TouchableOpacity>
       </View>
