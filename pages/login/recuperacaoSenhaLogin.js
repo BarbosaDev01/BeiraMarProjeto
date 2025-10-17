@@ -5,7 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 
 export default function RecuperarSenha() {
   const [email, setEmail] = useState('');
-   const navigation = useNavigation();
+  const navigation = useNavigation();
   
 
   return (

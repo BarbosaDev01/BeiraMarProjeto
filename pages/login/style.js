@@ -1,5 +1,4 @@
 import {StyleSheet} from 'react-native'
-import { ScrollView } from 'react-native-web'
 export const style= StyleSheet.create({
     container:{
         flex:1,
@@ -34,7 +33,7 @@ export const style= StyleSheet.create({
         margin: 10,
         textAlign: 'center',
         fontSize: 25,   
-        fontFamily: 'Montserrat_700Bold'
+        fontFamily: 'Montserrat-Regular'
     },
 
      
@@ -70,30 +69,16 @@ esqueci:{
 },
 botaoTexto: {
   fontSize: 25,
-  fontFamily: 'Montserrat_700Bold',
+  fontFamily: 'Montserrat-Regular',
   color: 'blue',
   textAlign: 'center',
 },
 textos: {
-  fontFamily: 'Montserrat_700Bold',
+  fontFamily: 'Montserrat-Regular', 
   fontSize: 15,
   color: 'white',
   textAlign: 'left',
   justifyContent: 'left',
-  maxWidth: '250px',
-  padding: '20px'
-},
-scrollView: {
-  container: {
-    flex: 1,
-    paddingTop: StatusBar.currentHeight,
-  },
-  scrollView: {
-    backgroundColor: 'pink',
-  },
-  text: {
-    fontSize: 42,
-    padding: 12,
-  },
+
 }
 })
