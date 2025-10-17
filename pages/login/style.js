@@ -11,11 +11,13 @@ export const style= StyleSheet.create({
     logo:{ 
         margin: 10,
         borderRadius: 150,
-        width: 250, 
-        height: 250, 
         resizeMode: 'contain' ,
         alignItems:'center',
-        justifyContent:'center'
+        justifyContent:'center',
+        minWidth: 120, 
+        maxWidth: 250, 
+        maxHeight: 250, 
+        minHeight: 120, 
     },
     
     
@@ -82,6 +84,8 @@ textos: {
 
 },
 drawerContent: {
-   flex:1
+   flex:1, 
+   maxWidth: 250,
+   borderRadius: 20,
 }
 })

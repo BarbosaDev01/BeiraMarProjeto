@@ -19,8 +19,18 @@ export default function App() {
   });
   
   return (
-    <Menu />
-
+    <NavigationContainer>
+      <Stack.Navigator
+        initialRouteName="Menu"
+        screenOptions={{ headerShown: false }}
+      >
+        <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="Cadastro" component={Cadastro} />
+         <Stack.Screen name="RecuperarSenha" component={RecuperarSenha} />
+         <Stack.Screen name="ConfirmarSenha" component={ConfirmarSenha} />
+                  <Stack.Screen name="Menu" component={Menu} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
