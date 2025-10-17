@@ -9,6 +9,8 @@ import Cadastro from './pages/login/cadastroLogin';
 import RecuperarSenha from './pages/login/recuperacaoSenhaLogin';
 import ConfirmarSenha from './pages/login/confirmarSenha';
 
+import Menu from './pages/dashboard/menu';
+
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -17,17 +19,8 @@ export default function App() {
   });
   
   return (
-    <NavigationContainer>
-      <Stack.Navigator
-        initialRouteName="Login"
-        screenOptions={{ headerShown: false }}
-      >
-        <Stack.Screen name="Login" component={Login} />
-        <Stack.Screen name="Cadastro" component={Cadastro} />
-         <Stack.Screen name="RecuperarSenha" component={RecuperarSenha} />
-         <Stack.Screen name="ConfirmarSenha" component={ConfirmarSenha} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <Menu />
+
   );
 }
 

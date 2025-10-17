@@ -80,5 +80,8 @@ textos: {
   textAlign: 'left',
   justifyContent: 'left',
 
+},
+drawerContent: {
+   flex:1
 }
 })
