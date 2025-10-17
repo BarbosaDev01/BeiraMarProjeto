@@ -20,7 +20,7 @@ export default function RecuperarSenha() {
           style={style.logo}
         />
 
-        <Text style={style.textos}>
+        <Text style={[style.textos,{maxWidth: 300}]}>
           Insira seu e-mail ou número de recuperação, e enviaremos um código de 6 dígitos para a criação de uma nova senha.
         </Text>
 
