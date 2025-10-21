@@ -8,16 +8,19 @@ export const style= StyleSheet.create({
       
     },
     
+    logoContainer: {
+      justifyContent: 'center', 
+      alignItems: 'center',     
+      width: '100%',
+},
+
     logo:{ 
-        margin: 10,
-        borderRadius: 150,
-        resizeMode: 'contain' ,
-        alignItems:'center',
-        justifyContent:'center',
+        resizeMode: 'contain',
         minWidth: 120, 
         maxWidth: 250, 
         maxHeight: 250, 
         minHeight: 120, 
+        borderRadius:100,
     },
     
     
@@ -40,7 +43,6 @@ export const style= StyleSheet.create({
 
      
   icon: {
-    position: 'absolute', 
     left: 30,
     width:40,
     height:40,  
@@ -87,5 +89,20 @@ drawerContent: {
    flex:1, 
    maxWidth: 250,
    borderRadius: 20,
-}
+},
+sideContainer: {
+  position: 'absolute',
+  top: 0,
+  flexDirection: "column",
+  alignItems: "flex-start",
+}, 
+itemContainer: {
+ justifyContent: 'center', 
+  alignItems: 'center',  
+  flexDirection: 'row',    
+  alignItems: 'center',     
+  paddingHorizontal: 10,
+  marginVertical: 5,
+},
+
 })
