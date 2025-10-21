@@ -91,10 +91,10 @@ drawerContent: {
    borderRadius: 20,
 },
 sideContainer: {
-  position: 'absolute',
-  top: 0,
+  flex: 1, 
   flexDirection: "column",
   alignItems: "flex-start",
+  width: '100%',
 }, 
 itemContainer: {
  justifyContent: 'center', 

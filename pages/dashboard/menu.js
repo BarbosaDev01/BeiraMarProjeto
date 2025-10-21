@@ -5,8 +5,7 @@ import { useNavigation } from "@react-navigation/native";
 import {DrawerItem } from '@react-navigation/drawer';
 
 
-export default function Menu(){
-  const navigation = useNavigation();
+export default function Menu({ navigation }){
  return(
     <View style={style.drawerContent}>
         <ImageBackground 
@@ -15,10 +14,9 @@ export default function Menu(){
             resizeMode="cover">
         <View style={style.sideContainer}>
                 <View>
-                    <TouchableOpacity onPress={() => navigation.navigate('Login')} style={{margin:10}}>
-                        <Image source={require('../../assets/voltar.png')} />
-                        
-                        
+                    <TouchableOpacity onPress={() => navigation.closeDrawer()} style={{margin:10}}>
+                     <Image source={require('../../assets/voltar.png')} />
+                            
                     </TouchableOpacity>
                 </View>                
                 <View style={style.logoContainer}>
