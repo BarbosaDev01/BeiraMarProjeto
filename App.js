@@ -1,7 +1,7 @@
 import React from 'react'; 
 import { StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 import { useFonts } from 'expo-font';
 
 import Login from './pages/login/index';
@@ -10,8 +10,9 @@ import RecuperarSenha from './pages/login/recuperacaoSenhaLogin';
 import ConfirmarSenha from './pages/login/confirmarSenha';
 
 import Menu from './pages/dashboard/menu';
+import DashboardTest from './pages/dashboard/dashboardTest';
 
-const Stack = createNativeStackNavigator();
+const Drawer = createDrawerNavigator();
 
 export default function App() {
    const [fontsLoaded] = useFonts({
@@ -20,16 +21,17 @@ export default function App() {
   
   return (
     <NavigationContainer>
-      <Stack.Navigator
-        initialRouteName="Menu"
+      <Drawer.Navigator
+        drawerContent={(props) => <Menu {...props} />}
         screenOptions={{ headerShown: false }}
+        initialRouteName="DashboardTest"
       >
-        <Stack.Screen name="Login" component={Login} />
-        <Stack.Screen name="Cadastro" component={Cadastro} />
-         <Stack.Screen name="RecuperarSenha" component={RecuperarSenha} />
-         <Stack.Screen name="ConfirmarSenha" component={ConfirmarSenha} />
-                  <Stack.Screen name="Menu" component={Menu} />
-      </Stack.Navigator>
+        <Drawer.Screen name="DashboardTest" component={DashboardTest} />
+        <Drawer.Screen name="Login" component={Login} />
+        <Drawer.Screen name="Cadastro" component={Cadastro} />
+        <Drawer.Screen name="RecuperarSenha" component={RecuperarSenha} />
+        <Drawer.Screen name="ConfirmarSenha" component={ConfirmarSenha} />
+      </Drawer.Navigator>
     </NavigationContainer>
   );
 }
