@@ -103,5 +103,45 @@ itemContainer: {
   paddingHorizontal: 10,
   marginVertical: 5,
 },
+menuButton: {
+    position: 'absolute',
+    top: 10,
+    left: 10,
+    zIndex: 10,
+    padding: 10,
+  },
+
+containerSider:{
+  flex: 1,
+  paddingTop: 10,
+  flexDirection: 'column'
+},
+tituloPaginas:{
+  top:2, 
+  color:'#385C92', 
+  fontWeight: 'bold', 
+  fontSize:50,
+  paddingLeft: 20,
+  paddingTop: 20,
+},
+barraControleProdutos:{
+  width: '80%',
+   height:100,
+  backgroundColor: '#107CE0',
+  padding: 20,
+    flexDirection: 'row',
+  gap: 100,
+},
+caixaPeixes: {
+  height:100,
+  width: '80%',
+  backgroundColor: '#ffff',
+  shadowColor: '#0000',
+  padding: 20,
+  flexDirection: 'row',
+  gap: 50,
+}
+
+
 
 })

@@ -1,58 +1,115 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, useWindowDimensions } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, useWindowDimensions,Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useDrawerStatus } from '@react-navigation/drawer'; 
 import { Ionicons } from '@expo/vector-icons'; 
+import {style} from '../login/style';
 
 export default function DashboardTest() {
   const navigation = useNavigation();
-  const dimensions = useWindowDimensions(); // 1. Obtém a largura da tela
+  const dimensions = useWindowDimensions(); 
   const isDrawerOpen = useDrawerStatus() === 'open';
 
-  // Define se a tela está no modo 'permanent' de desktop
   const isPermanentMode = dimensions.width >= 768; 
-
-  // Condição para mostrar o botão:
-  // 1. Não estamos no modo permanente (ou seja, estamos em mobile/tablet onde o menu não está fixo)
-  // E
-  // 2. O Drawer não está explicitamente aberto
   const shouldShowButton = !isPermanentMode && !isDrawerOpen;
-
-  // Se você precisa que o componente renderize o conteúdo do dashboard mesmo quando o menu
-  // está aberto/permanente, não deve retornar 'null' aqui.
   
   return (
-    <View style={styles.container}>
-      {/* 4. Renderiza o botão APENAS se shouldShowButton for verdadeiro */}
+    <View style={style.containerSider}>
+
+    <View>
       {shouldShowButton && (
         <TouchableOpacity
           style={styles.menuButton}
           onPress={() => navigation.openDrawer()} 
         >
-          {/* Você pode trocar o Ionicons por uma Image, como no seu Menu.js, se preferir */}
           <Ionicons name="menu" size={30} color="#000" /> 
         </TouchableOpacity>
       )}
+      </View>
+      <View style={{flexDirection:"row"}}>
+      <View>
+        <Text style={style.tituloPaginas}>Controle de Produtos</Text>
+        <View style={{flexDirection:"row"}}>
+        <Text>Produtos Atuais</Text>
+        <TouchableOpacity><Text>Histórico</Text></TouchableOpacity>
+        </View>
+      </View>
 
-      {/* Conteúdo do Dashboard continua visível, independentemente do estado do menu */}
-      <Text style={{textAlign: 'center', marginTop: 100}}>
-        Conteúdo do Dashboard (Menu lateral: {isPermanentMode ? 'PERMANENTE' : 'FRONT'})
-      </Text>
-      {/* ... restante do seu dashboard */}
+      <View>
+        <TouchableOpacity> <Image source={require('../../assets/Filtrar.png')} /> </TouchableOpacity>
+      </View>
+      
+      <View style={{flexDirection:"row"}}>
+         <TouchableOpacity> <Image source={require('../../assets/iconeComprar.png')} /> </TouchableOpacity>
+          <TouchableOpacity> <Image source={require('../../assets/iconeVender.png')} /> </TouchableOpacity>
+      </View>
+      </View>
+
+      <View style={{flexDirection:"column"}}>
+          <View style={style.barraControleProdutos}>
+            <Text>Id</Text>
+            <Text>Peixe</Text>
+             <Text>Status</Text>
+            <Text>Estoque Atual</Text>
+          </View>
+
+          <View style={style.caixaPeixes}>
+              <Text>#001</Text>
+              <Image source={require('../../assets/tilapiaImagem.png')} />
+              <Text>Tilápia</Text>
+              <TouchableOpacity>
+                <Text>Produção</Text> 
+                <Image source={require('../../assets/cliqueStatus.png')} />
+              </TouchableOpacity>
+              <Text>1.5 toneladas</Text>
+              <TouchableOpacity><Text>Exibir</Text></TouchableOpacity>
+          </View>
+
+            <View style={style.caixaPeixes}>
+              <Text>#002</Text>
+              <Image source={require('../../assets/pacuImagem.png')} />
+              <Text>Pacu</Text>
+              <TouchableOpacity>
+                <Text>Estoque</Text> 
+                <Image source={require('../../assets/cliqueStatus.png')} />
+              </TouchableOpacity>
+              <Text>50 caixas</Text>
+              <TouchableOpacity><Text>Exibir</Text></TouchableOpacity>
+          </View>
+
+            <View style={style.caixaPeixes}>
+              <Text>#001</Text>
+              <Image source={require('../../assets/tilapiaImagem.png')} />
+              <Text>Tilápia</Text>
+              <TouchableOpacity>
+                <Text>Venda</Text> 
+                <Image source={require('../../assets/cliqueStatus.png')} />
+              </TouchableOpacity>
+              <Text>1.5 toneladas</Text>
+              <TouchableOpacity><Text>Exibir</Text></TouchableOpacity>
+          </View>
+
+            <View style={style.caixaPeixes}>
+              <Text>#004</Text>
+              <Image source={require('../../assets/robaloImagem.png')} />
+              <Text>Robalo</Text>
+              <TouchableOpacity>
+                <Text>Produção</Text> 
+                <Image source={require('../../assets/cliqueStatus.png')} />
+              </TouchableOpacity>
+              <Text>6 toneladas</Text>
+              <TouchableOpacity><Text>Exibir</Text></TouchableOpacity>
+          </View>
+
+            
+      </View>
     </View>
+
+   
+    
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingTop: 50, 
-  },
-  menuButton: {
-    position: 'absolute',
-    top: 10,
-    left: 10,
-    zIndex: 10,
-    padding: 10,
-  },
+
 });
