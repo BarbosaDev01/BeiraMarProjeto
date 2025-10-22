@@ -25,7 +25,7 @@ export default function App() {
       <Drawer.Navigator
         drawerContent={(props) => <Menu {...props} />}
         screenOptions={{ 
-          drawerType: dimensions.width >= 768 ? 'permanent' : 'front', 
+          drawerType: 'front', 
           headerShown: false, 
           
         }}

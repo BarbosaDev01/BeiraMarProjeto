@@ -1,34 +1,43 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, useWindowDimensions } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-// 1. Importe o hook useDrawerStatus
 import { useDrawerStatus } from '@react-navigation/drawer'; 
-import { Ionicons } from '@expo/vector-icons'; // Exemplo de ícone
+import { Ionicons } from '@expo/vector-icons'; 
 
 export default function DashboardTest() {
   const navigation = useNavigation();
-  
-  // 2. Obtenha o status do Drawer (pode ser 'open' ou 'closed')
+  const dimensions = useWindowDimensions(); // 1. Obtém a largura da tela
   const isDrawerOpen = useDrawerStatus() === 'open';
 
-  // 3. Condição para renderizar o botão: APENAS se o Drawer estiver FECHADO
-  if (isDrawerOpen) {
-    // Se o Drawer estiver aberto, não renderiza o botão
-    return null; 
-  }
+  // Define se a tela está no modo 'permanent' de desktop
+  const isPermanentMode = dimensions.width >= 768; 
 
-  // Se o Drawer estiver fechado, renderiza o botão
+  // Condição para mostrar o botão:
+  // 1. Não estamos no modo permanente (ou seja, estamos em mobile/tablet onde o menu não está fixo)
+  // E
+  // 2. O Drawer não está explicitamente aberto
+  const shouldShowButton = !isPermanentMode && !isDrawerOpen;
+
+  // Se você precisa que o componente renderize o conteúdo do dashboard mesmo quando o menu
+  // está aberto/permanente, não deve retornar 'null' aqui.
+  
   return (
     <View style={styles.container}>
-      {/* Botão para Abrir o Drawer */}
-      <TouchableOpacity
-        style={styles.menuButton}
-        onPress={() => navigation.openDrawer()} 
-      >
-        <Ionicons name="menu" size={30} color="#000" />
-      </TouchableOpacity>
+      {/* 4. Renderiza o botão APENAS se shouldShowButton for verdadeiro */}
+      {shouldShowButton && (
+        <TouchableOpacity
+          style={styles.menuButton}
+          onPress={() => navigation.openDrawer()} 
+        >
+          {/* Você pode trocar o Ionicons por uma Image, como no seu Menu.js, se preferir */}
+          <Ionicons name="menu" size={30} color="#000" /> 
+        </TouchableOpacity>
+      )}
 
-      <Text>Conteúdo do Dashboard</Text>
+      {/* Conteúdo do Dashboard continua visível, independentemente do estado do menu */}
+      <Text style={{textAlign: 'center', marginTop: 100}}>
+        Conteúdo do Dashboard (Menu lateral: {isPermanentMode ? 'PERMANENTE' : 'FRONT'})
+      </Text>
       {/* ... restante do seu dashboard */}
     </View>
   );
