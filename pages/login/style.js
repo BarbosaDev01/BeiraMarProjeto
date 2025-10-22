@@ -114,34 +114,42 @@ menuButton: {
 containerSider:{
   flex: 1,
   paddingTop: 10,
-  flexDirection: 'column'
+  flexDirection: 'column',
+  alignItems: 'center',
+  justifyContent: 'center',
+  position: 'relative',
 },
+
 tituloPaginas:{
-  top:2, 
   color:'#385C92', 
   fontWeight: 'bold', 
-  fontSize:50,
-  paddingLeft: 20,
-  paddingTop: 20,
+  fontSize: 40,
+  textAlign: 'center',
+  marginVertical: 20,
 },
+
 barraControleProdutos:{
   width: '80%',
-   height:100,
+  height:100,
   backgroundColor: '#107CE0',
   padding: 20,
-    flexDirection: 'row',
-  gap: 100,
+  flexDirection: 'row',
+  alignItems: 'center',
+  justifyContent: 'space-around',
+  borderRadius: 10,
 },
+
 caixaPeixes: {
+  marginTop: 10,
   height:100,
   width: '80%',
-  backgroundColor: '#ffff',
-  shadowColor: '#0000',
+  backgroundColor: '#fff',
   padding: 20,
   flexDirection: 'row',
-  gap: 50,
+  alignItems: 'center',
+  justifyContent: 'space-between',
+  borderRadius: 10,
 }
-
 
 
 })

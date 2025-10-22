@@ -9,29 +9,33 @@ import Cadastro from './pages/login/cadastroLogin';
 import RecuperarSenha from './pages/login/recuperacaoSenhaLogin';
 import ConfirmarSenha from './pages/login/confirmarSenha';
 import DashboardTest from './pages/dashboard/dashTeste';
-
 import Menu from './pages/dashboard/menu';
 
 const Drawer = createDrawerNavigator();
 
 export default function App() {
   const dimensions = useWindowDimensions();
-   const [fontsLoaded] = useFonts({
+
+  const [fontsLoaded] = useFonts({
     'Montserrat-Regular': require('./assets/fonts/Montserrat-Regular.ttf'),
   });
-  
+
+ 
+  const isLargeScreen = dimensions.width >= 768;
+
   return (
     <NavigationContainer>
       <Drawer.Navigator
         drawerContent={(props) => <Menu {...props} />}
-        screenOptions={{ 
-          drawerType: 'front', 
-          headerShown: false, 
-          
+        screenOptions={{
+        
+          drawerType: isLargeScreen ? 'permanent' : 'front',
+          headerShown: false,
+          swipeEnabled: !isLargeScreen, 
         }}
         drawerStyle={{
-           width: '20%',
-    
+          
+          width: isLargeScreen ? 240 : '70%',
         }}
         initialRouteName="DashboardTest"
       >
