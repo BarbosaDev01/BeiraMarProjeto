@@ -11,8 +11,8 @@ export default function ConfirmarSenha() {
       style={style.container}
       resizeMode="cover"
       >
-     <View style={{ justifyContent: 'center', alignItems: 'center', marginBottom: 30 }}>
-         <Image source={require('../../assets/logoBeira.png')} style={style.logo} />
+     <View style={style.logoContainer}>
+         <Image source={require('../../assets/logoBeira.png')} style={[style.logo, {borderRadius:150}]} />
      </View>
 
      <View>

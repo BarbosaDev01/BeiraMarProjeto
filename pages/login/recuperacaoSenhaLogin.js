@@ -14,10 +14,10 @@ export default function RecuperarSenha() {
       style={style.container}
       resizeMode="cover"
     >
-      <View style={{ alignItems: 'center', padding: 20 }}>
+      <View style={style.logoContainer}>
         <Image
           source={require('../../assets/logoBeira.png')}
-          style={style.logo}
+          style={[style.logo,{borderRadius: 150}]}
         />
 
         <Text style={[style.textos,{maxWidth: 300}]}>

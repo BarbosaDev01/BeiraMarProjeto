@@ -87,7 +87,6 @@ textos: {
 },
 drawerContent: {
    flex:1, 
-   maxWidth: 250,
    borderRadius: 20,
 },
 sideContainer: {

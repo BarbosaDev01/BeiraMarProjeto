@@ -15,8 +15,8 @@ export default function Login() {
       style={style.container}
       resizeMode="cover"
     >
-      <View style={[{justifyContent:'center'}]}>
-        <Image source={require('../../assets/logoBeira.png')} style={style.logo} />
+      <View style={style.logoContainer}>
+        <Image source={require('../../assets/logoBeira.png')} style={[style.logo,{borderRadius:150}]} />
       </View>
 
       <View>

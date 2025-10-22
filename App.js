@@ -8,6 +8,7 @@ import Login from './pages/login/index';
 import Cadastro from './pages/login/cadastroLogin';
 import RecuperarSenha from './pages/login/recuperacaoSenhaLogin';
 import ConfirmarSenha from './pages/login/confirmarSenha';
+import DashboardTest from './pages/dashboard/dashTeste';
 
 import Menu from './pages/dashboard/menu';
 
@@ -24,9 +25,17 @@ export default function App() {
       <Drawer.Navigator
         drawerContent={(props) => <Menu {...props} />}
         screenOptions={{ 
-          drawerType: dimensions.width >= 768 ? 'permanent' : 'front', }}
-        initialRouteName="Login"
+          drawerType: dimensions.width >= 768 ? 'permanent' : 'front', 
+          headerShown: false, 
+          
+        }}
+        drawerStyle={{
+           width: '20%',
+    
+        }}
+        initialRouteName="DashboardTest"
       >
+        <Drawer.Screen name="DashboardTest" component={DashboardTest} />
         <Drawer.Screen name="Login" component={Login} />
         <Drawer.Screen name="Cadastro" component={Cadastro} />
         <Drawer.Screen name="RecuperarSenha" component={RecuperarSenha} />
