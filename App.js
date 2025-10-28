@@ -10,6 +10,7 @@ import RecuperarSenha from './pages/login/recuperacaoSenhaLogin';
 import ConfirmarSenha from './pages/login/confirmarSenha';
 import ControleProduto from './pages/dashboard/EstoqueControle/controleProduto';
 import Menu from './pages/dashboard/menu';
+import NovoPeixeControle from './pages/dashboard/novoPeixeControle';
 
 const Drawer = createDrawerNavigator();
 
@@ -40,6 +41,7 @@ export default function App() {
         initialRouteName="ControleProduto"
       >
         <Drawer.Screen name="ControleProduto" component={ControleProduto} />
+         <Drawer.Screen name="NovoPeixeControle" component={NovoPeixeControle} />
         <Drawer.Screen name="Login" component={Login} />
         <Drawer.Screen name="Cadastro" component={Cadastro} />
         <Drawer.Screen name="RecuperarSenha" component={RecuperarSenha} />

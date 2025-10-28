@@ -10,6 +10,7 @@ import {
 import { useNavigation } from '@react-navigation/native';
 import { useDrawerStatus } from '@react-navigation/drawer';
 import { Ionicons } from '@expo/vector-icons';
+import NovoPeixeControle from '../novoPeixeControle';
 
 // Estilos globais importados
 import { style } from '../../login/style';
@@ -96,6 +97,12 @@ export default function ControleProduto() {
             </TouchableOpacity>
           </View>
         ))}
+        <View>
+            <TouchableOpacity style={[style.botoes, {backgroundColor:'#107CE0'} ]}   onPress={() => navigation.navigate('NovoPeixeControle')}>
+                <Image source={require('../../../assets/adicionar.png')}/>
+                <Text>Adicionar novo produto</Text>
+            </TouchableOpacity>
+        </View>
       </View>
     </View>
   );
@@ -122,6 +129,7 @@ const styles = StyleSheet.create({
     margin: 10,
     justifyContent: 'center',
     alignItems: 'center',
+    flexDirection: 'row'
   },
 
   acoesHeader: {
