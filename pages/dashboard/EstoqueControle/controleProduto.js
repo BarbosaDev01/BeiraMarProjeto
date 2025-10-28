@@ -3,9 +3,9 @@ import { View, Text, TouchableOpacity, StyleSheet, useWindowDimensions, Image } 
 import { useNavigation } from '@react-navigation/native';
 import { useDrawerStatus } from '@react-navigation/drawer'; 
 import { Ionicons } from '@expo/vector-icons'; 
-import { style } from '../login/style';
+import { style } from '../../login/style';
 
-export default function DashboardTest() {
+export default function ControleProduto() {
   const navigation = useNavigation();
   const dimensions = useWindowDimensions(); 
   const isDrawerOpen = useDrawerStatus() === 'open';

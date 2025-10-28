@@ -8,7 +8,7 @@ import Login from './pages/login/index';
 import Cadastro from './pages/login/cadastroLogin';
 import RecuperarSenha from './pages/login/recuperacaoSenhaLogin';
 import ConfirmarSenha from './pages/login/confirmarSenha';
-import DashboardTest from './pages/dashboard/dashTeste';
+import ControleProduto from './pages/dashboard/EstoqueControle/controleProduto';
 import Menu from './pages/dashboard/menu';
 
 const Drawer = createDrawerNavigator();
@@ -37,9 +37,9 @@ export default function App() {
           
           width: isLargeScreen ? 240 : '70%',
         }}
-        initialRouteName="DashboardTest"
+        initialRouteName="ControleProduto"
       >
-        <Drawer.Screen name="DashboardTest" component={DashboardTest} />
+        <Drawer.Screen name="ControleProduto" component={ControleProduto} />
         <Drawer.Screen name="Login" component={Login} />
         <Drawer.Screen name="Cadastro" component={Cadastro} />
         <Drawer.Screen name="RecuperarSenha" component={RecuperarSenha} />
