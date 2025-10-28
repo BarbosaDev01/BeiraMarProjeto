@@ -110,7 +110,20 @@ menuButton: {
     zIndex: 10,
     padding: 10,
   },
-
+menuButton2: {
+    position: 'absolute',
+    top: 20,
+    left: 20,
+    zIndex: 10,
+    backgroundColor: '#fff',
+    borderRadius: 10,
+    padding: 5,
+    elevation: 3, 
+    shadowColor: '#000',
+    shadowOpacity: 0.2,
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 3,
+  },
 containerSider:{
   flex: 1,
   paddingTop: 10,
@@ -149,7 +162,14 @@ caixaPeixes: {
   alignItems: 'center',
   justifyContent: 'space-between',
   borderRadius: 10,
-}
+},
+textoBarra: {
+  color:'#fff',
+  padding: 20,
+  fontFamily: 'Montserrat-Regular',
+
+},
+
 
 
 })
