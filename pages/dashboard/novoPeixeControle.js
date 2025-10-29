@@ -10,12 +10,13 @@ import {
 import { useNavigation } from '@react-navigation/native';
 import { useDrawerStatus } from '@react-navigation/drawer';
 import { Ionicons } from '@expo/vector-icons';
+import ControleProduto from './EstoqueControle/controleProduto';
 
 import { style } from '../login/style';
 
 export default function NovoPeixeControle() {
     return( 
-        <View style={[style.containerSider, { flex: 1 }]}> 
+        <View style={[style.containerSider, { flex: 1}]}> 
             <View>
             <Text style={style.tituloPaginas}>Novo Peixes</Text>
         </View>
@@ -30,10 +31,16 @@ export default function NovoPeixeControle() {
         <View >
             <TouchableOpacity style={{flexDirection:'row'}}>
                 <Image source={require('../../assets/adicionar.png')}/>
-            <Text>Adicionar novo Peixe</Text>
+                <Text>Adicionar novo Peixe</Text>
 
             </TouchableOpacity>
             
+        </View> 
+
+        <View>
+            <TouchableOpacity style={[style.botoes, {backgroundColor:'#107CE0'}]}>
+                <Text>Salvar</Text>
+            </TouchableOpacity>
         </View>
         
         </View>

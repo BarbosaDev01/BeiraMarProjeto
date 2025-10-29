@@ -98,7 +98,7 @@ export default function ControleProduto() {
           </View>
         ))}
         <View>
-            <TouchableOpacity style={[style.botoes, {backgroundColor:'#107CE0'} ]}   onPress={() => navigation.navigate('NovoPeixeControle')}>
+            <TouchableOpacity style={[style.botoes, {backgroundColor:'#107CE0', flexDirection: 'row'} ]}   onPress={() => navigation.navigate('NovoPeixeControle')}>
                 <Image source={require('../../../assets/adicionar.png')}/>
                 <Text>Adicionar novo produto</Text>
             </TouchableOpacity>
@@ -125,7 +125,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#107CE0',
     borderRadius: 10,
     width: 200,
-    height: 70,
+    height: 50,
     margin: 10,
     justifyContent: 'center',
     alignItems: 'center',
