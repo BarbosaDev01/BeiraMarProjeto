@@ -3,11 +3,10 @@ import { View, Text, Image, TextInput, ImageBackground, TouchableOpacity } from 
 import { style } from './style';
 import { useNavigation } from '@react-navigation/native';
 
-
 export default function Login() {
   const [usuario, setUsuario] = useState('');
   const [senha, setSenha] = useState('');
-  const navigation = useNavigation(); // hook de navegação
+  const navigation = useNavigation();
 
   return (
     <ImageBackground
@@ -16,11 +15,15 @@ export default function Login() {
       resizeMode="cover"
     >
       <View style={style.logoContainer}>
-        <Image source={require('../../assets/logoBeira.png')} style={[style.logo,{borderRadius:150}]} />
+        <Image
+          source={require('../../assets/logoBeira.png')}
+          style={[style.logo, { borderRadius: 150 }]}
+        />
       </View>
 
+      {/* Campo Usuário */}
       <View>
-        <Image source={require('../../assets/usuario.png')} style={style.icon} />
+        <Image source={require('../../assets/usuario.png')} style={style.icon2} />
         <TextInput
           placeholder="USUÁRIO"
           value={usuario}
@@ -30,6 +33,7 @@ export default function Login() {
         />
       </View>
 
+      {/* Campo Senha */}
       <View>
         <Image source={require('../../assets/senha.png')} style={style.icon2} />
         <TextInput
@@ -42,28 +46,30 @@ export default function Login() {
         />
       </View>
 
-      <View>
-         <TouchableOpacity 
-    onPress={() => navigation.navigate('RecuperarSenha')}
-    activeOpacity={0.7} 
->
-    <Text style={style.textos}>Esqueci minha senha</Text>
-</TouchableOpacity> 
-      </View>
+      {/* Link Esqueci minha senha */}
+      <TouchableOpacity
+        onPress={() => navigation.navigate('RecuperarSenha')}
+        activeOpacity={0.7}
+      >
+        <Text style={style.textos}>Esqueci minha senha</Text>
+      </TouchableOpacity>
 
+      {/* Botões */}
       <View>
-        <TouchableOpacity style={style.botoes}>
+        <TouchableOpacity
+          style={style.botoes}
+          onPress={() => navigation.navigate('Dashboard', { screen: 'ControleProduto' })}
+        >
           <Text style={style.botaoTexto}>LOGIN</Text>
         </TouchableOpacity>
 
-    <TouchableOpacity 
-    style={style.botoes} 
-    onPress={() => navigation.navigate('Cadastro')}
-    activeOpacity={0.7} // efeito visual ao tocar
->
-    <Text style={style.botaoTexto}>CRIAR CONTA</Text>
-</TouchableOpacity>
-        
+        <TouchableOpacity
+          style={style.botoes}
+          onPress={() => navigation.navigate('Cadastro')}
+          activeOpacity={0.7}
+        >
+          <Text style={style.botaoTexto}>CRIAR CONTA</Text>
+        </TouchableOpacity>
       </View>
     </ImageBackground>
   );
