@@ -8,6 +8,7 @@ import {
   Image 
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { useState } from 'react';
 import { useDrawerStatus } from '@react-navigation/drawer';
 import { Ionicons } from '@expo/vector-icons';
 import ControleProduto from './EstoqueControle/controleProduto';
@@ -15,6 +16,7 @@ import ControleProduto from './EstoqueControle/controleProduto';
 import { style } from '../login/style';
 
 export default function NovoPeixeControle() {
+    
     return( 
         <View style={[style.containerSider, { flex: 1}]}> 
             <View>

@@ -28,12 +28,12 @@ export default function Cadastro() {
         
                 {/* Logo centralizada */}
                 <View style={style.logoContainer}>
-                    <Image source={require('../../assets/logoBeira.png')} style={[style.logo, {borderRadius: 100}]} />
+                    <Image source={require('../../assets/logoBeira.png')} style={[style.logo, {borderRadius: 150}]} />
                 </View>
 
                 {/* Inputs */}
-                <View>
-                    <View>
+                <View style={{alignContent: 'center', flexDirection: 'column', alignSelf: 'center'}}>
+                    <View style={{flexDirection: 'row'}}>
                         <Image source={require('../../assets/email.png')} style={style.icon} />
                         <TextInput
                             placeholder="E-MAIL"
@@ -44,7 +44,7 @@ export default function Cadastro() {
                         />
                     </View>
 
-                    <View>
+                    <View style={style.inputContainer}>
                         <Image source={require('../../assets/usuario.png')} style={style.icon} />
                         <TextInput
                             placeholder="NOME DO USUÁRIO"
@@ -55,7 +55,7 @@ export default function Cadastro() {
                         />
                     </View>
 
-                    <View>
+                    <View style={style.inputContainer}>
                         <Image source={require('../../assets/phone.png')} style={style.icon} />
                         <TextInput
                             placeholder="Telefone"
@@ -66,7 +66,7 @@ export default function Cadastro() {
                         />
                     </View>
 
-                    <View>
+                    <View style={style.inputContainer}>
                         <Image source={require('../../assets/interfaceCpf.png')} style={style.icon} />
                         <TextInput
                             placeholder="CPF"
@@ -77,7 +77,7 @@ export default function Cadastro() {
                         />
                     </View>
 
-                    <View>
+                    <View style={style.inputContainer}>
                         <Image source={require('../../assets/senha.png')} style={style.icon} />
                         <TextInput
                             placeholder="SENHA"

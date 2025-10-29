@@ -24,7 +24,7 @@ export const style= StyleSheet.create({
     },
     
     
-    input:{
+  input:{
         borderWidth: 1,
         borderRadius: 15, 
         color: 'white',
@@ -40,14 +40,16 @@ export const style= StyleSheet.create({
         fontSize: 25,   
         fontFamily: 'Montserrat-Regular'
     },
+    inputContainer:{
+    flexDirection: 'row',
+    alignItems: 'center',
+    alignSelf: 'center',
+    },
 
      
   icon: {
-    left: 30,
     width:40,
-    height:40,  
-    margin: 20,           
-    tintColor: '#aaa',
+    height:40,            
   },
 
 icon2: {
