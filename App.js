@@ -11,7 +11,7 @@ import Cadastro from './pages/login/cadastroLogin';
 import RecuperarSenha from './pages/login/recuperacaoSenhaLogin';
 import ConfirmarSenha from './pages/login/confirmarSenha';
 import ControleProduto from './pages/dashboard/EstoqueControle/controleProduto';
-import NovoPeixeControle from './pages/dashboard/novoPeixeControle';
+import NovoPeixeControle from './pages/dashboard/EstoqueControle/novoPeixeControle';
 import Menu from './pages/dashboard/menu';
 
 const Drawer = createDrawerNavigator();
@@ -23,6 +23,7 @@ function DrawerRoutes() {
 
   return (
     <Drawer.Navigator
+      initialRouteName="ControleProduto"
       drawerContent={(props) => <Menu {...props} />}
       screenOptions={{
         drawerType: isLargeScreen ? 'permanent' : 'front',

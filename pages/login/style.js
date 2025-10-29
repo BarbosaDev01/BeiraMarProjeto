@@ -1,177 +1,104 @@
-import {StyleSheet} from 'react-native'
-export const style= StyleSheet.create({
-    container:{
-        flex:1,
-        alignItems:'center',
-        justifyContent:'center',
-        width: '100%'
-      
-    },
-    
-    logoContainer: {
-      justifyContent: 'center', 
-      alignItems: 'center',     
-      width: '100%',
-},
+import { StyleSheet } from 'react-native';
 
-    logo:{ 
-        resizeMode: 'contain',
-        minWidth: 120, 
-        maxWidth: 250, 
-        maxHeight: 250, 
-        minHeight: 120, 
-        borderRadius:100,
-    },
-    
-    
-  input:{
-        borderWidth: 1,
-        borderRadius: 15, 
-        color: 'white',
-        borderColor: 'white',
-        padding: 8,
-        marginTop: 10,
-        height:60,
-        width: 460,
-        alignItems:'center',
-        justifyContent:'center',
-        margin: 10,
-        textAlign: 'center',
-        fontSize: 25,   
-        fontFamily: 'Montserrat-Regular'
-    },
-    inputContainer:{
+export const loginStyles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#107CE0',
+  },
+  logoContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 20,
+  },
+  logo: {
+    width: 150,
+    height: 150,
+    resizeMode: 'contain',
+  },
+  inputWrapper: {
+    marginVertical: 10,
+  },
+    inputRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    alignSelf: 'center',
-    },
-
-     
-  icon: {
-    width:40,
-    height:40,            
-  },
-
-icon2: {
-    position: 'absolute', 
-    left: 30,
-    width:30,
-    height:30,  
-    margin: 20,           
-    tintColor: '#aaa',
-  },
-esqueci:{
-    color:'white', 
-    flexDirection: 'row-reverse'
-  }, 
- botoes: {
-  backgroundColor: 'white',
-  borderRadius: 10,
-  width: 450, 
-  height: 70,
-  margin: 10,
-  justifyContent: 'center', 
-  alignItems: 'center',     
-},
-botaoTexto: {
-  fontSize: 25,
-  fontFamily: 'Montserrat-Regular',
-  color: 'blue',
-  textAlign: 'center',
-},
-textos: {
-  fontFamily: 'Montserrat-Regular', 
-  fontSize: 15,
-  color: 'white',
-  textAlign: 'left',
-  justifyContent: 'left',
-
-},
-drawerContent: {
-   flex:1, 
-   borderRadius: 20,
-},
-sideContainer: {
-  flex: 1, 
-  flexDirection: "column",
-  alignItems: "flex-start",
-  width: '100%',
-}, 
-itemContainer: {
- justifyContent: 'center', 
-  alignItems: 'center',  
-  flexDirection: 'row',    
-  alignItems: 'center',     
-  paddingHorizontal: 10,
-  marginVertical: 5,
-},
-menuButton: {
-    position: 'absolute',
-    top: 10,
-    left: 10,
-    zIndex: 10,
-    padding: 10,
-  },
-menuButton2: {
-    position: 'absolute',
-    top: 20,
-    left: 20,
-    zIndex: 10,
-    backgroundColor: '#fff',
+    backgroundColor: '#fff', // Fundo branco para toda a linha
     borderRadius: 10,
-    padding: 5,
-    elevation: 3, 
-    shadowColor: '#000',
-    shadowOpacity: 0.2,
-    shadowOffset: { width: 0, height: 2 },
-    shadowRadius: 3,
+    paddingHorizontal: 15,
+    marginVertical: 10,
+    height: 50,
+    width: '85%',
   },
-containerSider:{
-  flex: 1,
-  paddingTop: 10,
-  flexDirection: 'column',
-  alignItems: 'center',
-  justifyContent: 'center',
-  position: 'relative',
-},
 
-tituloPaginas:{
-  color:'#385C92', 
-  fontWeight: 'bold', 
-  fontSize: 40,
-  textAlign: 'center',
-  marginVertical: 20,
-},
+  input: {
+    flex: 1,
+    paddingVertical: 12,
+    paddingHorizontal: 10,
+    color: '#000', // Texto preto para contraste
+    fontSize: 16,
+    backgroundColor: 'transparent', // Remove fundo do input
+  },
 
-barraControleProdutos:{
-  width: '80%',
-  height:100,
-  backgroundColor: '#107CE0',
-  padding: 20,
-  flexDirection: 'row',
-  alignItems: 'center',
-  justifyContent: 'space-around',
+  icon: {
+    width: 24,
+    height: 24,
+    resizeMode: 'contain',
+    marginRight: 8,
+  },
+   
+botoes: {
+  paddingVertical: 12,
   borderRadius: 10,
-},
-
-caixaPeixes: {
-  marginTop: 10,
-  height:100,
-  width: '80%',
-  backgroundColor: '#fff',
-  padding: 20,
-  flexDirection: 'row',
+  width: '70%',
   alignItems: 'center',
-  justifyContent: 'space-between',
-  borderRadius: 10,
-},
-textoBarra: {
-  color:'#fff',
-  padding: 20,
-  fontFamily: 'Montserrat-Regular',
-
+  marginTop: 20,           // aumenta distância do último input
 },
 
 
+  botaoTexto: {
+    color: '#107CE0',
+    fontWeight: 'bold',
+  },
 
-})
+  // --- Texto: esqueci senha / instruções / gerais ---
+  forgotPassword: {
+    color: '#fff',
+    marginVertical: 10,
+    textAlign: 'center',
+    fontSize: 14,
+    textDecorationLine: 'underline',
+  },
+
+  instructions: {
+    color: '#fff',
+    textAlign: 'center',
+    fontSize: 16,
+    marginVertical: 20,
+    paddingHorizontal: 25,
+    lineHeight: 22,
+  },
+
+  text: {
+    color: '#fff',
+    fontSize: 16,
+    textAlign: 'center',
+    marginVertical: 8,
+  },
+
+  // --- Botão principal global ---
+  button: {
+    backgroundColor: '#fff',
+    padding: 12,
+    borderRadius: 10,
+    width: '60%',
+    alignItems: 'center',
+    marginTop: 10,
+  },
+
+  buttonText: {
+    color: '#107CE0',
+    fontWeight: 'bold',
+    fontSize: 16,
+  },
+});

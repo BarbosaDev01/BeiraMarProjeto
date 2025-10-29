@@ -8,7 +8,8 @@ import {
     Text, 
     ScrollView 
 } from "react-native";
-import { style } from './style';
+import { globalStyles } from '../../styles/globalStyles'; 
+import { loginStyles } from "./style";
 import { useNavigation } from '@react-navigation/native';
 
 export default function Cadastro() {
@@ -23,67 +24,70 @@ export default function Cadastro() {
         <ImageBackground 
             source={require("../../assets/imagemFundo.png")} 
             resizeMode="cover"
-            style={style.container}
+            style={globalStyles.container}
         >
-        
+            <ScrollView contentContainerStyle={{ alignItems: 'center', paddingVertical: 20 }}>
                 {/* Logo centralizada */}
-                <View style={style.logoContainer}>
-                    <Image source={require('../../assets/logoBeira.png')} style={[style.logo, {borderRadius: 150}]} />
+                <View style={globalStyles.logoContainer}>
+                    <Image 
+                        source={require('../../assets/logoBeira.png')} 
+                        style={[globalStyles.logo, { borderRadius: 150 }]} 
+                    />
                 </View>
 
                 {/* Inputs */}
-                <View style={{alignContent: 'center', flexDirection: 'column', alignSelf: 'center'}}>
-                    <View style={{flexDirection: 'row'}}>
-                        <Image source={require('../../assets/email.png')} style={style.icon} />
+                <View style={loginStyles.inputWrapper}>
+                    <View style={loginStyles.inputRow}>
+                        <Image source={require('../../assets/email.png')} style={loginStyles.icon} />
                         <TextInput
                             placeholder="E-MAIL"
                             value={email}
                             onChangeText={setEmail}
-                            style={style.input}
+                            style={globalStyles.input}
                             placeholderTextColor="white"
                         />
                     </View>
 
-                    <View style={style.inputContainer}>
-                        <Image source={require('../../assets/usuario.png')} style={style.icon} />
+                    <View style={loginStyles.inputRow}>
+                        <Image source={require('../../assets/usuario.png')} style={loginStyles.icon} />
                         <TextInput
                             placeholder="NOME DO USUÁRIO"
                             value={nomeUsuario}
                             onChangeText={setNomeUsuario}
-                            style={style.input}
+                            style={globalStyles.input}
                             placeholderTextColor="white"
                         />
                     </View>
 
-                    <View style={style.inputContainer}>
-                        <Image source={require('../../assets/phone.png')} style={style.icon} />
+                    <View style={loginStyles.inputRow}>
+                        <Image source={require('../../assets/phone.png')} style={loginStyles.icon} />
                         <TextInput
-                            placeholder="Telefone"
+                            placeholder="TELEFONE"
                             value={telefone}
                             onChangeText={setTelefone}
-                            style={style.input}
+                            style={globalStyles.input}
                             placeholderTextColor="white"
                         />
                     </View>
 
-                    <View style={style.inputContainer}>
-                        <Image source={require('../../assets/interfaceCpf.png')} style={style.icon} />
+                    <View style={loginStyles.inputRow}>
+                        <Image source={require('../../assets/interfaceCpf.png')} style={globalStyles.icon} />
                         <TextInput
                             placeholder="CPF"
                             value={cpf}
                             onChangeText={setCpf}
-                            style={style.input}
+                            style={globalStyles.input}
                             placeholderTextColor="white"
                         />
                     </View>
 
-                    <View style={style.inputContainer}>
-                        <Image source={require('../../assets/senha.png')} style={style.icon} />
+                    <View style={loginStyles.inputRow}>
+                        <Image source={require('../../assets/senha.png')} style={globalStyles.icon} />
                         <TextInput
                             placeholder="SENHA"
                             value={criarSenha}
                             onChangeText={setCriarSenha}
-                            style={style.input}
+                            style={globalStyles.input}
                             placeholderTextColor="white"
                             secureTextEntry={true}
                         />
@@ -91,14 +95,14 @@ export default function Cadastro() {
 
                     {/* Botão */}
                     <TouchableOpacity 
-                        style={style.botoes} 
+                        style={globalStyles.button} 
                         onPress={() => navigation.navigate('Login')}
                         activeOpacity={0.7} 
                     >
-                        <Text style={style.botaoTexto}>CADASTRAR</Text>
+                        <Text style={globalStyles.buttonText}>CADASTRAR</Text>
                     </TouchableOpacity>
-
                 </View>
+            </ScrollView>
         </ImageBackground>
     );
 }

@@ -1,43 +1,47 @@
 import React, { useState } from 'react';
 import { View, Text, Image, TextInput, ImageBackground, TouchableOpacity } from 'react-native';
-import { style } from './style';
+import { globalStyles } from '../../styles/globalStyles';
+import { loginStyles } from './style';
 import { useNavigation } from '@react-navigation/native';
 
 export default function RecuperarSenha() {
   const [email, setEmail] = useState('');
   const navigation = useNavigation();
-  
 
   return (
     <ImageBackground
       source={require('../../assets/imagemFundo.png')}
-      style={style.container}
+      style={globalStyles.container}
       resizeMode="cover"
     >
-      <View style={style.logoContainer}>
+      <View style={[globalStyles.logoContainer, { justifyContent: 'center' }]}>
+        {/* Logo */}
         <Image
           source={require('../../assets/logoBeira.png')}
-          style={[style.logo,{borderRadius: 150}]}
+          style={[globalStyles.logo, { borderRadius: 150 }]}
         />
 
-        <Text style={[style.textos,{maxWidth: 300}]}>
+        {/* Instrução */}
+        <Text style={[globalStyles.text, loginStyles.instructions]}>
           Insira seu e-mail ou número de recuperação, e enviaremos um código de 6 dígitos para a criação de uma nova senha.
         </Text>
 
+        {/* Input */}
         <TextInput
           placeholder="Email ou número"
           placeholderTextColor="white"
-          style={style.input}
+          style={globalStyles.input}
           value={email}
           onChangeText={setEmail}
         />
 
-          <TouchableOpacity 
-            onPress={() => navigation.navigate('ConfirmarSenha')}
-            activeOpacity={0.7} 
-            style={style.botoes}
+        {/* Botão */}
+        <TouchableOpacity 
+          onPress={() => navigation.navigate('ConfirmarSenha')}
+          activeOpacity={0.7} 
+          style={globalStyles.button}
         >
-          <Text style={style.botaoTexto}>ENVIAR</Text>
+          <Text style={globalStyles.buttonText}>ENVIAR</Text>
         </TouchableOpacity>
       </View>
     </ImageBackground>
