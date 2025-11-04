@@ -9,31 +9,22 @@ import {
   ScrollView 
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { useDrawerStatus } from '@react-navigation/drawer';
 import { Ionicons } from '@expo/vector-icons';
 import { globalStyles } from '../../../styles/globalStyles';
 
 export default function ControleProduto() {
   const navigation = useNavigation();
   const dimensions = useWindowDimensions();
-  const isDrawerOpen = useDrawerStatus() === 'open';
   const isLargeScreen = dimensions.width >= 768;
-  const shouldShowButton = !isLargeScreen && !isDrawerOpen;
 
-  const produtos = [
-    { id: '#001', nome: 'Tilápia', status: 'Produção', estoque: '1.5 toneladas', img: require('../../../assets/tilapiaImagem.png') },
-    { id: '#002', nome: 'Pacu', status: 'Estoque', estoque: '50 caixas', img: require('../../../assets/pacuImagem.png') },
-    { id: '#003', nome: 'Tilápia', status: 'Venda', estoque: '1.5 toneladas', img: require('../../../assets/tilapiaImagem.png') },
-    { id: '#004', nome: 'Robalo', status: 'Produção', estoque: '6 toneladas', img: require('../../../assets/robaloImagem.png') },
-  ];
+  const shouldShowButton = !isLargeScreen;
 
   return (
     <View style={[globalStyles.containerSider, { flex: 1 }]}>
-      
       {/* Botão menu drawer */}
       {shouldShowButton && (
         <TouchableOpacity
-          style={globalStyles.menuButton2}
+          style={[globalStyles.menuButton2, { margin: 10 }]}
           onPress={() => navigation.openDrawer()}
         >
           <Ionicons name="menu" size={30} color="#000" />
@@ -41,7 +32,6 @@ export default function ControleProduto() {
       )}
 
       <ScrollView contentContainerStyle={controleProdutoStyles.containerPrincipal}>
-        
         {/* Cabeçalho */}
         <View style={controleProdutoStyles.header}>
           <View>
@@ -76,22 +66,65 @@ export default function ControleProduto() {
           <Text style={globalStyles.textoBarra}>Estoque Atual</Text>
         </View>
 
-        {/* Lista de produtos */}
-        {produtos.map((item, index) => (
-          <View key={index} style={controleProdutoStyles.caixaPeixes}>
-            <Text style={controleProdutoStyles.texto}>{item.id}</Text>
-            <Image source={item.img} style={controleProdutoStyles.produtoImagem} />
-            <Text style={controleProdutoStyles.texto}>{item.nome}</Text>
-            <TouchableOpacity style={controleProdutoStyles.statusContainer}>
-              <Text style={controleProdutoStyles.texto}>{item.status}</Text>
-              <Image source={require('../../../assets/cliqueStatus.png')} style={controleProdutoStyles.statusIcon} />
-            </TouchableOpacity>
-            <Text style={controleProdutoStyles.texto}>{item.estoque}</Text>
-            <TouchableOpacity style={controleProdutoStyles.botaoExibir}>
-              <Text style={{ color: '#107CE0' }}>Exibir</Text>
-            </TouchableOpacity>
-          </View>
-        ))}
+        {/* Produto 1 */}
+        <View style={controleProdutoStyles.caixaPeixes}>
+          <Text style={controleProdutoStyles.texto}>#001</Text>
+          <Image source={require('../../../assets/tilapiaImagem.png')} style={controleProdutoStyles.produtoImagem} />
+          <Text style={controleProdutoStyles.texto}>Tilápia</Text>
+          <TouchableOpacity style={controleProdutoStyles.statusContainer}>
+            <Text style={controleProdutoStyles.texto}>Produção</Text>
+            <Image source={require('../../../assets/cliqueStatus.png')} style={controleProdutoStyles.statusIcon} />
+          </TouchableOpacity>
+          <Text style={controleProdutoStyles.texto}>1.5 toneladas</Text>
+          <TouchableOpacity style={controleProdutoStyles.botaoExibir}>
+            <Text style={{ color: '#107CE0' }}>Exibir</Text>
+          </TouchableOpacity>
+        </View>
+
+        {/* Produto 2 */}
+        <View style={controleProdutoStyles.caixaPeixes}>
+          <Text style={controleProdutoStyles.texto}>#002</Text>
+          <Image source={require('../../../assets/pacuImagem.png')} style={controleProdutoStyles.produtoImagem} />
+          <Text style={controleProdutoStyles.texto}>Pacu</Text>
+          <TouchableOpacity style={controleProdutoStyles.statusContainer}>
+            <Text style={controleProdutoStyles.texto}>Estoque</Text>
+            <Image source={require('../../../assets/cliqueStatus.png')} style={controleProdutoStyles.statusIcon} />
+          </TouchableOpacity>
+          <Text style={controleProdutoStyles.texto}>50 caixas</Text>
+          <TouchableOpacity style={controleProdutoStyles.botaoExibir}>
+            <Text style={{ color: '#107CE0' }}>Exibir</Text>
+          </TouchableOpacity>
+        </View>
+
+        {/* Produto 3 */}
+        <View style={controleProdutoStyles.caixaPeixes}>
+          <Text style={controleProdutoStyles.texto}>#003</Text>
+          <Image source={require('../../../assets/tilapiaImagem.png')} style={controleProdutoStyles.produtoImagem} />
+          <Text style={controleProdutoStyles.texto}>Tilápia</Text>
+          <TouchableOpacity style={controleProdutoStyles.statusContainer}>
+            <Text style={controleProdutoStyles.texto}>Venda</Text>
+            <Image source={require('../../../assets/cliqueStatus.png')} style={controleProdutoStyles.statusIcon} />
+          </TouchableOpacity>
+          <Text style={controleProdutoStyles.texto}>1.5 toneladas</Text>
+          <TouchableOpacity style={controleProdutoStyles.botaoExibir}>
+            <Text style={{ color: '#107CE0' }}>Exibir</Text>
+          </TouchableOpacity>
+        </View>
+
+        {/* Produto 4 */}
+        <View style={controleProdutoStyles.caixaPeixes}>
+          <Text style={controleProdutoStyles.texto}>#004</Text>
+          <Image source={require('../../../assets/robaloImagem.png')} style={controleProdutoStyles.produtoImagem} />
+          <Text style={controleProdutoStyles.texto}>Robalo</Text>
+          <TouchableOpacity style={controleProdutoStyles.statusContainer}>
+            <Text style={controleProdutoStyles.texto}>Produção</Text>
+            <Image source={require('../../../assets/cliqueStatus.png')} style={controleProdutoStyles.statusIcon} />
+          </TouchableOpacity>
+          <Text style={controleProdutoStyles.texto}>6 toneladas</Text>
+          <TouchableOpacity style={controleProdutoStyles.botaoExibir}>
+            <Text style={{ color: '#107CE0' }}>Exibir</Text>
+          </TouchableOpacity>
+        </View>
 
         {/* Botão adicionar novo produto */}
         <View style={controleProdutoStyles.adicionarContainer}>
@@ -103,7 +136,6 @@ export default function ControleProduto() {
             <Text style={globalStyles.buttonText}>Adicionar novo produto</Text>
           </TouchableOpacity>
         </View>
-
       </ScrollView>
     </View>
   );
@@ -134,7 +166,7 @@ const controleProdutoStyles = StyleSheet.create({
   acoesHeader: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 10,
+    marginRight: 10, // substituindo gap
   },
   caixaPeixes: {
     width: '90%',
@@ -155,7 +187,7 @@ const controleProdutoStyles = StyleSheet.create({
   statusContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 5,
+    marginRight: 5, // substituindo gap
   },
   statusIcon: {
     width: 15,

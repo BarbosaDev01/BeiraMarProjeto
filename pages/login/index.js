@@ -1,13 +1,35 @@
 import React, { useState } from 'react';
-import { View, Text, Image, TextInput, ImageBackground, TouchableOpacity } from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  TextInput,
+  ImageBackground,
+  TouchableOpacity,
+  Alert,
+} from 'react-native';
 import { globalStyles } from '../../styles/globalStyles';
 import { loginStyles } from './style';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/core';
 
 export default function Login() {
   const [usuario, setUsuario] = useState('');
   const [senha, setSenha] = useState('');
   const navigation = useNavigation();
+  console.log('NAVIGATION:', navigation);
+
+  function handleLogin() {
+    if (!usuario || !senha) {
+      Alert.alert('Atenção', 'Preencha usuário e senha');
+      return;
+    }
+
+    // Aqui vai direto pro DrawerRoutes (Dashboard)
+    navigation.reset({
+      index: 0,
+      routes: [{ name: 'Dashboard' }],
+    });
+  }
 
   return (
     <ImageBackground
@@ -49,10 +71,7 @@ export default function Login() {
       </View>
 
       {/* Link Esqueci minha senha */}
-      <TouchableOpacity
-        onPress={() => navigation.navigate('RecuperarSenha')}
-        activeOpacity={0.7}
-      >
+      <TouchableOpacity onPress={() => navigation.navigate('RecuperarSenha')}>
         <Text style={loginStyles.forgotPassword}>Esqueci minha senha</Text>
       </TouchableOpacity>
 
@@ -60,7 +79,8 @@ export default function Login() {
       <View>
         <TouchableOpacity
           style={globalStyles.button}
-        onPress={() => navigation.navigate('Dashboard')}
+          onPress={handleLogin}
+          activeOpacity={0.8}
         >
           <Text style={globalStyles.buttonText}>LOGIN</Text>
         </TouchableOpacity>
@@ -68,7 +88,7 @@ export default function Login() {
         <TouchableOpacity
           style={globalStyles.button}
           onPress={() => navigation.navigate('Cadastro')}
-          activeOpacity={0.7}
+          activeOpacity={0.8}
         >
           <Text style={globalStyles.buttonText}>CRIAR CONTA</Text>
         </TouchableOpacity>

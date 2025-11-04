@@ -23,7 +23,6 @@ export const loginStyles = StyleSheet.create({
     inputRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#fff', // Fundo branco para toda a linha
     borderRadius: 10,
     paddingHorizontal: 15,
     marginVertical: 10,

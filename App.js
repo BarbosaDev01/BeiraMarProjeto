@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, useWindowDimensions } from 'react-native';
+import { StyleSheet, useWindowDimensions, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -22,21 +22,21 @@ function DrawerRoutes() {
   const isLargeScreen = dimensions.width >= 768;
 
   return (
-    <Drawer.Navigator
-      initialRouteName="ControleProduto"
-      drawerContent={(props) => <Menu {...props} />}
-      screenOptions={{
-        drawerType: isLargeScreen ? 'permanent' : 'front',
-        headerShown: false,
-        swipeEnabled: !isLargeScreen,
-      }}
-      drawerStyle={{
-        width: isLargeScreen ? 240 : '70%',
-      }}
-    >
-      <Drawer.Screen name="ControleProduto" component={ControleProduto} />
-      <Drawer.Screen name="NovoPeixeControle" component={NovoPeixeControle} />
-    </Drawer.Navigator>
+    <View style={{ flex: 1 }}>
+      <Drawer.Navigator
+        initialRouteName="ControleProduto"
+        drawerContent={(props) => <Menu {...props} />}
+        screenOptions={{
+          headerShown: false,
+          drawerType: isLargeScreen ? 'permanent' : 'front',
+          swipeEnabled: !isLargeScreen,
+          drawerStyle: { width: isLargeScreen ? 240 : '70%' },
+        }}
+      >
+        <Drawer.Screen name="ControleProduto" component={ControleProduto} />
+        <Drawer.Screen name="NovoPeixeControle" component={NovoPeixeControle} />
+      </Drawer.Navigator>
+    </View>
   );
 }
 
@@ -49,18 +49,14 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator
-        screenOptions={{
-          headerShown: false,
-        }}
-      >
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
         {/* Telas sem sidebar */}
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Cadastro" component={Cadastro} />
         <Stack.Screen name="RecuperarSenha" component={RecuperarSenha} />
         <Stack.Screen name="ConfirmarSenha" component={ConfirmarSenha} />
 
-        {/* Telas com sidebar */}
+        {/* Tela principal com Drawer */}
         <Stack.Screen name="Dashboard" component={DrawerRoutes} />
       </Stack.Navigator>
     </NavigationContainer>
