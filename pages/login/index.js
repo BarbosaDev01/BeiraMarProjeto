@@ -16,20 +16,7 @@ export default function Login() {
   const [usuario, setUsuario] = useState('');
   const [senha, setSenha] = useState('');
   const navigation = useNavigation();
-  console.log('NAVIGATION:', navigation);
-
-  function handleLogin() {
-    if (!usuario || !senha) {
-      Alert.alert('Atenção', 'Preencha usuário e senha');
-      return;
-    }
-
-    // Aqui vai direto pro DrawerRoutes (Dashboard)
-    navigation.reset({
-      index: 0,
-      routes: [{ name: 'Dashboard' }],
-    });
-  }
+  
 
   return (
     <ImageBackground
@@ -79,7 +66,7 @@ export default function Login() {
       <View>
         <TouchableOpacity
           style={globalStyles.button}
-          onPress={handleLogin}
+          onPress={() => navigation.navigate('DrawerRoutes')}
           activeOpacity={0.8}
         >
           <Text style={globalStyles.buttonText}>LOGIN</Text>

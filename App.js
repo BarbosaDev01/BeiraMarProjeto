@@ -25,7 +25,6 @@ function DrawerRoutes() {
     <View style={{ flex: 1 }}>
       <Drawer.Navigator
         initialRouteName="ControleProduto"
-        drawerContent={(props) => <Menu {...props} />}
         screenOptions={{
           headerShown: false,
           drawerType: isLargeScreen ? 'permanent' : 'front',
@@ -57,7 +56,7 @@ export default function App() {
         <Stack.Screen name="ConfirmarSenha" component={ConfirmarSenha} />
 
         {/* Tela principal com Drawer */}
-        <Stack.Screen name="Dashboard" component={DrawerRoutes} />
+        <Stack.Screen name="DrawerRoutes" component={DrawerRoutes} />
       </Stack.Navigator>
     </NavigationContainer>
   );
