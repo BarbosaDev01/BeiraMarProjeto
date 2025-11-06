@@ -83,4 +83,21 @@ export const globalStyles = StyleSheet.create({
     color: 'white',
     textAlign: 'left',
   },
+  barraControleProdutos:{
+    backgroundColor: "#107CE0",
+    flexDirection: "row",
+    padding: 20,
+    width: '90%',
+  }, 
+  textoBarra: {
+    flexDirection: 'row',
+    marginRight: 125
+    
+  },
+  tituloPaginas: {
+    color: "#107CE0",
+    fontSize: 50,
+    fontFamily: 'Montserrat-Regular'
+  }
+
 });

@@ -33,7 +33,7 @@ function DrawerRoutes() {
         }}
       >
         <Drawer.Screen name="ControleProduto" component={ControleProduto} />
-        <Drawer.Screen name="NovoPeixeControle" component={NovoPeixeControle} />
+        
       </Drawer.Navigator>
     </View>
   );
@@ -54,6 +54,7 @@ export default function App() {
         <Stack.Screen name="Cadastro" component={Cadastro} />
         <Stack.Screen name="RecuperarSenha" component={RecuperarSenha} />
         <Stack.Screen name="ConfirmarSenha" component={ConfirmarSenha} />
+        <Stack.Screen name="NovoPeixeControle" component={NovoPeixeControle} />
 
         {/* Tela principal com Drawer */}
         <Stack.Screen name="DrawerRoutes" component={DrawerRoutes} />
