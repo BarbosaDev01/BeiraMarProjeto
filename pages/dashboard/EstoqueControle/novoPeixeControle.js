@@ -7,9 +7,46 @@ import {
   StyleSheet,
   ScrollView,
   TextInput,
+  Modal, // Importado o componente Modal
 } from 'react-native';
 import { globalStyles } from '../../../styles/globalStyles';
 import { useNavigation } from '@react-navigation/native';
+
+// --- Componente Modal Separado para seleção de Status ---
+const StatusModal = ({ visible, onClose, onSelectStatus }) => {
+  const statusOptions = ['Entrada', 'Produção', 'Embalada', 'Venda'];
+
+  return (
+    <Modal
+      animationType="fade"
+      transparent={true}
+      visible={visible}
+      onRequestClose={onClose}
+    >
+      <View style={modalStyles.centeredView}>
+        <View style={modalStyles.modalView}>
+          <Text style={modalStyles.modalTitle}>Selecione o Status</Text>
+          {statusOptions.map((status) => (
+            <TouchableOpacity
+              key={status}
+              style={modalStyles.statusOption}
+              onPress={() => onSelectStatus(status)}
+            >
+              <Text style={modalStyles.statusText}>{status}</Text>
+            </TouchableOpacity>
+          ))}
+          <TouchableOpacity
+            style={[modalStyles.button, modalStyles.buttonClose]}
+            onPress={onClose}
+          >
+            <Text style={modalStyles.textStyle}>Atualizar Status</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+    </Modal>
+  );
+};
+// --- Fim do Componente Modal ---
 
 export default function NovoPeixeControle() {
   const navigation = useNavigation();
@@ -17,6 +54,7 @@ export default function NovoPeixeControle() {
   const [nome, setNome] = useState('');
   const [status, setStatus] = useState('');
   const [estoque, setEstoque] = useState('');
+  const [modalVisible, setModalVisible] = useState(false);// Novo estado para controlar o Modal
 
   const adicionarPeixe = () => {
     if (!nome || !status || !estoque) {
@@ -35,6 +73,11 @@ export default function NovoPeixeControle() {
     setNome('');
     setStatus('');
     setEstoque('');
+  };
+
+  const handleStatusSelect = (selectedStatus) => {
+    setStatus(selectedStatus);
+    setModalVisible(false); // Fecha o modal após a seleção
   };
 
   return (
@@ -60,17 +103,23 @@ export default function NovoPeixeControle() {
             value={nome}
             onChangeText={setNome}
           />
-          <TextInput
-            style={styles.input}
-            placeholder="Status (ex: Produção)"
-            value={status}
-            onChangeText={setStatus}
-          />
+
+          {/* Botão que abre o Modal para selecionar o Status */}
+          <TouchableOpacity
+            style={[styles.input, styles.statusInput]}
+            onPress={() => setModalVisible(true)} // Abre o Modal
+          >
+            <Text style={status ? styles.statusTextFilled : styles.statusTextPlaceholder}>
+              {status || "Status (ex: Produção)"}
+            </Text>
+          </TouchableOpacity>
+
           <TextInput
             style={styles.input}
             placeholder="Estoque (ex: 1.5 toneladas)"
             value={estoque}
             onChangeText={setEstoque}
+            keyboardType="numeric" // Adicionado para estoque
           />
           <TouchableOpacity
             style={styles.adicionarPeixeButton}
@@ -109,10 +158,17 @@ export default function NovoPeixeControle() {
 
         <View style={styles.salvarContainer}>
           <TouchableOpacity onPress={() => navigation.navigate('DrawerRoutes')} style={[globalStyles.button, { backgroundColor: '#107CE0' }]} >
-            <Text style={globalStyles.buttonText}>Salvar</Text>
+            <Text style={{color:"white", fontSize: 35}}>Salvar</Text>
           </TouchableOpacity>
         </View>
       </ScrollView>
+
+      {/* Renderiza o Modal */}
+      <StatusModal
+        visible={modalVisible}
+        onClose={() => setModalVisible(false)}
+        onSelectStatus={handleStatusSelect}
+      />
     </View>
   );
 }
@@ -138,6 +194,17 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     padding: 10,
     marginBottom: 10,
+  },
+  statusInput: {
+    justifyContent: 'center', // Alinha o texto verticalmente no TouchableOpacity
+  },
+  statusTextFilled: {
+    color: '#333',
+    fontSize: 14,
+  },
+  statusTextPlaceholder: {
+    color: '#999',
+    fontSize: 14,
   },
   adicionarPeixeButton: {
     flexDirection: 'row',
@@ -196,7 +263,66 @@ const styles = StyleSheet.create({
     paddingVertical: 4,
   },
   salvarContainer: {
+    padding: 10,
+    alignContent: "center",
+    alignItems:"center"
+  },
+});
+
+// --- Estilos para o Modal ---
+const modalStyles = StyleSheet.create({
+  centeredView: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)', // Fundo escuro
+  },
+  modalView: {
+    margin: 20,
+    backgroundColor: 'white',
+    borderRadius: 10,
+    padding: 35,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+    width: '80%',
+  },
+  modalTitle: {
+    marginBottom: 15,
+    textAlign: 'center',
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#333',
+  },
+  statusOption: {
+    padding: 10,
+    width: '100%',
+    borderBottomWidth: 1,
+    borderBottomColor: '#eee',
+  },
+  statusText: {
+    textAlign: 'center',
+    fontSize: 16,
+    color: '#107CE0',
+  },
+  button: {
+    borderRadius: 8,
+    padding: 10,
+    elevation: 2,
     marginTop: 20,
-    width: '90%',
+  },
+  buttonClose: {
+    backgroundColor: '#ccc',
+  },
+  textStyle: {
+    color: 'white',
+    fontWeight: 'bold',
+    textAlign: 'center',
   },
 });

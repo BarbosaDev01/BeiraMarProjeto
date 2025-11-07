@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { 
   View, 
   Text, 
@@ -6,7 +6,8 @@ import {
   Image, 
   StyleSheet, 
   useWindowDimensions, 
-  ScrollView 
+  ScrollView, 
+  Modal 
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
@@ -16,18 +17,38 @@ export default function ControleProduto() {
   const navigation = useNavigation();
   const dimensions = useWindowDimensions();
   const isLargeScreen = dimensions.width >= 768;
-
   const shouldShowButton = !isLargeScreen;
+
+  const [modalVisible, setModalVisible] = useState(false);
+  const [statusSelecionado, setStatusSelecionado] = useState('Produção');
+
+  // === Função para definir cor do status dinamicamente ===
+  const getStatusStyle = (status) => {
+    switch (status) {
+      case 'Produção':
+        return { backgroundColor: '#D32F2F' }; // vermelho
+      case 'Estoque':
+        return { backgroundColor: '#FBC02D' }; // amarelo
+      case 'Venda':
+        return { backgroundColor: '#1976D2' }; // azul
+      default:
+        return { backgroundColor: '#E0E0E0' };
+    }
+  };
+
+  const selecionarStatus = (novoStatus) => {
+    setStatusSelecionado(novoStatus);
+    setModalVisible(false);
+  };
 
   return (
     <View style={[globalStyles.containerSider, { flex: 1 }]}>
-      {/* Botão menu drawer */}
       {shouldShowButton && (
         <TouchableOpacity
-          style={[globalStyles.menuButton2, { margin: 10 }]}
+          style={[globalStyles.menuButton2, { margin: 12 }]}
           onPress={() => navigation.openDrawer()}
         >
-          <Ionicons name="menu" size={30} color="#000" />
+          <Ionicons name="menu" size={28} color="#000" />
         </TouchableOpacity>
       )}
 
@@ -37,9 +58,9 @@ export default function ControleProduto() {
           <View>
             <Text style={globalStyles.tituloPaginas}>Controle de Produtos</Text>
             <View style={controleProdutoStyles.subHeader}>
-              <Text>Produtos Atuais</Text>
-              <TouchableOpacity style={{ paddingLeft: 5 }}>
-                <Text style={{ color: '#107CE0' }}>Histórico</Text>
+              <Text style={controleProdutoStyles.subHeaderText}>Produtos Atuais</Text>
+              <TouchableOpacity style={controleProdutoStyles.histButton}>
+                <Text style={controleProdutoStyles.histText}>Histórico</Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -49,10 +70,10 @@ export default function ControleProduto() {
           </TouchableOpacity>
 
           <View style={controleProdutoStyles.acoesHeader}>
-            <TouchableOpacity>
+            <TouchableOpacity style={controleProdutoStyles.iconeAcao}>
               <Image source={require('../../../assets/iconeComprar.png')} />
             </TouchableOpacity>
-            <TouchableOpacity>
+            <TouchableOpacity style={controleProdutoStyles.iconeAcao}>
               <Image source={require('../../../assets/iconeVender.png')} />
             </TouchableOpacity>
           </View>
@@ -71,58 +92,20 @@ export default function ControleProduto() {
           <Text style={controleProdutoStyles.texto}>#001</Text>
           <Image source={require('../../../assets/tilapiaImagem.png')} style={controleProdutoStyles.produtoImagem} />
           <Text style={controleProdutoStyles.texto}>Tilápia</Text>
-          <TouchableOpacity style={controleProdutoStyles.statusContainer}>
-            <Text style={controleProdutoStyles.texto}>Produção</Text>
-            <Image source={require('../../../assets/cliqueStatus.png')} style={controleProdutoStyles.statusIcon} />
+
+          <TouchableOpacity 
+            style={[controleProdutoStyles.statusContainer, getStatusStyle(statusSelecionado)]}
+            onPress={() => setModalVisible(true)}
+          >
+            <Text style={controleProdutoStyles.statusTexto}>
+              {statusSelecionado}
+            </Text>
+            <Ionicons name="chevron-down" size={16} color="#fff" style={{ marginLeft: 4 }} />
           </TouchableOpacity>
+
           <Text style={controleProdutoStyles.texto}>1.5 toneladas</Text>
           <TouchableOpacity style={controleProdutoStyles.botaoExibir}>
-            <Text style={{ color: '#107CE0' }}>Exibir</Text>
-          </TouchableOpacity>
-        </View>
-
-        {/* Produto 2 */}
-        <View style={controleProdutoStyles.caixaPeixes}>
-          <Text style={controleProdutoStyles.texto}>#002</Text>
-          <Image source={require('../../../assets/pacuImagem.png')} style={controleProdutoStyles.produtoImagem} />
-          <Text style={controleProdutoStyles.texto}>Pacu</Text>
-          <TouchableOpacity style={controleProdutoStyles.statusContainer}>
-            <Text style={controleProdutoStyles.texto}>Estoque</Text>
-            <Image source={require('../../../assets/cliqueStatus.png')} style={controleProdutoStyles.statusIcon} />
-          </TouchableOpacity>
-          <Text style={controleProdutoStyles.texto}>50 caixas</Text>
-          <TouchableOpacity style={controleProdutoStyles.botaoExibir}>
-            <Text style={{ color: '#107CE0' }}>Exibir</Text>
-          </TouchableOpacity>
-        </View>
-
-        {/* Produto 3 */}
-        <View style={controleProdutoStyles.caixaPeixes}>
-          <Text style={controleProdutoStyles.texto}>#003</Text>
-          <Image source={require('../../../assets/tilapiaImagem.png')} style={controleProdutoStyles.produtoImagem} />
-          <Text style={controleProdutoStyles.texto}>Tilápia</Text>
-          <TouchableOpacity style={controleProdutoStyles.statusContainer}>
-            <Text style={controleProdutoStyles.texto}>Venda</Text>
-            <Image source={require('../../../assets/cliqueStatus.png')} style={controleProdutoStyles.statusIcon} />
-          </TouchableOpacity>
-          <Text style={controleProdutoStyles.texto}>1.5 toneladas</Text>
-          <TouchableOpacity style={controleProdutoStyles.botaoExibir}>
-            <Text style={{ color: '#107CE0' }}>Exibir</Text>
-          </TouchableOpacity>
-        </View>
-
-        {/* Produto 4 */}
-        <View style={controleProdutoStyles.caixaPeixes}>
-          <Text style={controleProdutoStyles.texto}>#004</Text>
-          <Image source={require('../../../assets/robaloImagem.png')} style={controleProdutoStyles.produtoImagem} />
-          <Text style={controleProdutoStyles.texto}>Robalo</Text>
-          <TouchableOpacity style={controleProdutoStyles.statusContainer}>
-            <Text style={controleProdutoStyles.texto}>Produção</Text>
-            <Image source={require('../../../assets/cliqueStatus.png')} style={controleProdutoStyles.statusIcon} />
-          </TouchableOpacity>
-          <Text style={controleProdutoStyles.texto}>6 toneladas</Text>
-          <TouchableOpacity style={controleProdutoStyles.botaoExibir}>
-            <Text style={{ color: '#107CE0' }}>Exibir</Text>
+            <Text style={controleProdutoStyles.textoExibir}>Exibir</Text>
           </TouchableOpacity>
         </View>
 
@@ -133,10 +116,43 @@ export default function ControleProduto() {
             onPress={() => navigation.navigate('NovoPeixeControle')}
           >
             <Image source={require('../../../assets/adicionar.png')} style={controleProdutoStyles.adicionarIcon} />
-            <Text style={globalStyles.buttonText}>Adicionar novo produto</Text>
+            <Text style={controleProdutoStyles.buttonTextAdicionar}>Adicionar novo produto</Text>
           </TouchableOpacity>
         </View>
       </ScrollView>
+
+      {/* MODAL */}
+      <Modal
+        transparent={true}
+        visible={modalVisible}
+        animationType="fade"
+        onRequestClose={() => setModalVisible(false)}
+      >
+        <View style={controleProdutoStyles.overlay}>
+          <View style={controleProdutoStyles.modalContainer}>
+            <Text style={controleProdutoStyles.modalTitulo}>Selecione o Status:</Text>
+
+            {['Produção', 'Estoque', 'Venda', 'Suspenso'].map((status, index) => (
+              <TouchableOpacity key={index} onPress={() => selecionarStatus(status)}>
+                <Text style={controleProdutoStyles.modalOpcao}>
+                  {status === 'Produção' && '🟢 '}
+                  {status === 'Estoque' && '🔵 '}
+                  {status === 'Venda' && '🟠 '}
+                  {status === 'Suspenso' && '🔴 '}
+                  {status}
+                </Text>
+              </TouchableOpacity>
+            ))}
+
+            <TouchableOpacity 
+              onPress={() => setModalVisible(false)} 
+              style={controleProdutoStyles.modalFechar}
+            >
+              <Text style={controleProdutoStyles.modalFecharText}>Fechar</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </Modal>
     </View>
   );
 }
@@ -146,7 +162,7 @@ const controleProdutoStyles = StyleSheet.create({
     flexGrow: 1,
     width: '100%',
     alignItems: 'center',
-    paddingBottom: 20,
+    paddingBottom: 30,
   },
   header: {
     width: '90%',
@@ -154,57 +170,86 @@ const controleProdutoStyles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    flexWrap: 'wrap',   
   },
   subHeader: {
     flexDirection: 'row',
     alignItems: 'center',
     marginTop: 5,
   },
+  subHeaderText: {
+    fontSize: 14,
+    color: '#555',
+  },
+  histButton: {
+    paddingLeft: 8,
+  },
+  histText: {
+    color: '#107CE0',
+    fontWeight: '500',
+  },
   botaoFiltro: {
-    padding: 5,
+    padding: 6,
     backgroundColor:'#107CE0',
-    borderRadius: 8,
+    borderRadius: 10,
+    flexShrink: 1, 
   },
   acoesHeader: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginRight: 10, // substituindo gap
+  },
+  iconeAcao: {
+    marginHorizontal: 5,
   },
   caixaPeixes: {
     width: '90%',
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    padding: 10,
+    padding: 12,
     borderWidth: 1,
-    borderColor: '#ddd',
-    borderRadius: 8,
-    marginVertical: 5,
+    borderColor: '#E0E0E0',
+    borderRadius: 12,
+    marginVertical: 6,
+    backgroundColor: '#FAFAFA',
   },
   produtoImagem: {
-    width: 50,
-    height: 50,
+    width: 55,
+    height: 55,
     resizeMode: 'contain',
   },
+  // === NOVO ESTILO STATUS ===
   statusContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginRight: 5, // substituindo gap
+    borderRadius: 6,
+    paddingVertical: 4,
+    paddingHorizontal: 10,
+    minWidth: 100,
+    justifyContent: 'center',
   },
-  statusIcon: {
-    width: 15,
-    height: 15,
-    resizeMode: 'contain',
+  statusTexto: {
+    color: '#fff',
+    fontWeight: 'bold',
+    fontSize: 13,
   },
   texto: {
     fontSize: 14,
+    color: '#333',
   },
   botaoExibir: {
-    paddingHorizontal: 5,
-    paddingVertical: 2,
+    paddingHorizontal: 6,
+    paddingVertical: 3,
+    borderRadius: 6,
+    borderWidth: 1,
+    borderColor: '#107CE0',
+  },
+  textoExibir: {
+    color: '#107CE0',
+    fontWeight: '500',
   },
   adicionarContainer: {
-    marginTop: 20,
+    marginTop: 25,
     width: '90%',
   },
   buttonAdicionar: {
@@ -212,13 +257,52 @@ const controleProdutoStyles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    padding: 12,
-    borderRadius: 8,
+    padding: 14,
+    borderRadius: 12,
   },
   adicionarIcon: {
-    width: 20,
-    height: 20,
-    marginRight: 8,
+    width: 22,
+    height: 22,
+    marginRight: 10,
     resizeMode: 'contain',
+  },
+  buttonTextAdicionar: {
+    color: '#fff',
+    fontWeight: '600',
+  },
+  overlay: {
+    flex: 1,
+    backgroundColor: 'rgba(0,0,0,0.4)',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  modalContainer: {
+    width: 260,
+    backgroundColor: '#fff',
+    borderRadius: 16,
+    padding: 20,
+    elevation: 12,
+  },
+  modalTitulo: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginBottom: 12,
+    color: '#333',
+  },
+  modalOpcao: {
+    fontSize: 16,
+    paddingVertical: 6,
+    color: '#444',
+  },
+  modalFechar: {
+    marginTop: 12,
+    backgroundColor: '#107CE0',
+    paddingVertical: 8,
+    borderRadius: 10,
+    alignItems: 'center',
+  },
+  modalFecharText: {
+    color: '#fff',
+    fontWeight: '600',
   },
 });
