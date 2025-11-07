@@ -1,108 +1,103 @@
-import {StyleSheet} from 'react-native'
-export const style= StyleSheet.create({
-    container:{
-        flex:1,
-        alignItems:'center',
-        justifyContent:'center',
-        width: '100%'
-      
-    },
-    
-    logoContainer: {
-      justifyContent: 'center', 
-      alignItems: 'center',     
-      width: '100%',
-},
+import { StyleSheet } from 'react-native';
 
-    logo:{ 
-        resizeMode: 'contain',
-        minWidth: 120, 
-        maxWidth: 250, 
-        maxHeight: 250, 
-        minHeight: 120, 
-        borderRadius:100,
-    },
-    
-    
-    input:{
-        borderWidth: 1,
-        borderRadius: 15, 
-        color: 'white',
-        borderColor: 'white',
-        padding: 8,
-        marginTop: 10,
-        height:60,
-        width: 460,
-        alignItems:'center',
-        justifyContent:'center',
-        margin: 10,
-        textAlign: 'center',
-        fontSize: 25,   
-        fontFamily: 'Montserrat-Regular'
-    },
+export const loginStyles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#107CE0',
+  },
+  logoContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 20,
+  },
+  logo: {
+    width: 150,
+    height: 150,
+    resizeMode: 'contain',
+  },
+  inputWrapper: {
+    marginVertical: 10,
+  },
+    inputRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderRadius: 10,
+    paddingHorizontal: 15,
+    marginVertical: 10,
+    height: 50,
+    width: '85%',
+  },
 
-     
+  input: {
+    flex: 1,
+    paddingVertical: 12,
+    paddingHorizontal: 10,
+    color: '#000', // Texto preto para contraste
+    fontSize: 16,
+    backgroundColor: 'transparent', // Remove fundo do input
+  },
+
   icon: {
-    left: 30,
-    width:40,
-    height:40,  
-    margin: 20,           
-    tintColor: '#aaa',
+    width: 24,
+    height: 24,
+    resizeMode: 'contain',
+    marginRight: 8,
   },
-
-icon2: {
-    position: 'absolute', 
-    left: 30,
-    width:30,
-    height:30,  
-    margin: 20,           
-    tintColor: '#aaa',
-  },
-esqueci:{
-    color:'white', 
-    flexDirection: 'row-reverse'
-  }, 
- botoes: {
-  backgroundColor: 'white',
+   
+botoes: {
+  paddingVertical: 12,
   borderRadius: 10,
-  width: 450, 
-  height: 70,
-  margin: 10,
-  justifyContent: 'center', 
-  alignItems: 'center',     
-},
-botaoTexto: {
-  fontSize: 25,
-  fontFamily: 'Montserrat-Regular',
-  color: 'blue',
-  textAlign: 'center',
-},
-textos: {
-  fontFamily: 'Montserrat-Regular', 
-  fontSize: 15,
-  color: 'white',
-  textAlign: 'left',
-  justifyContent: 'left',
-
-},
-drawerContent: {
-   flex:1, 
-   maxWidth: 250,
-   borderRadius: 20,
-},
-sideContainer: {
-  position: 'absolute',
-  top: 0,
-  flexDirection: "column",
-  alignItems: "flex-start",
-}, 
-itemContainer: {
- justifyContent: 'center', 
-  alignItems: 'center',  
-  flexDirection: 'row',    
-  alignItems: 'center',     
-  paddingHorizontal: 10,
-  marginVertical: 5,
+  width: '70%',
+  alignItems: 'center',
+  marginTop: 20,           // aumenta distância do último input
 },
 
-})
+
+  botaoTexto: {
+    color: '#107CE0',
+    fontWeight: 'bold',
+  },
+
+  // --- Texto: esqueci senha / instruções / gerais ---
+  forgotPassword: {
+    color: '#fff',
+    marginVertical: 10,
+    textAlign: 'center',
+    fontSize: 14,
+    textDecorationLine: 'underline',
+  },
+
+  instructions: {
+    color: '#fff',
+    textAlign: 'center',
+    fontSize: 16,
+    marginVertical: 20,
+    paddingHorizontal: 25,
+    lineHeight: 22,
+  },
+
+  text: {
+    color: '#fff',
+    fontSize: 16,
+    textAlign: 'center',
+    marginVertical: 8,
+  },
+
+  // --- Botão principal global ---
+  button: {
+    backgroundColor: '#fff',
+    padding: 12,
+    borderRadius: 10,
+    width: '60%',
+    alignItems: 'center',
+    marginTop: 10,
+  },
+
+  buttonText: {
+    color: '#107CE0',
+    fontWeight: 'bold',
+    fontSize: 16,
+  },
+});

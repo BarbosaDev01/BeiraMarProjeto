@@ -1,69 +1,84 @@
 import React, { useState } from 'react';
-import { View, Text, Image, TextInput, ImageBackground, TouchableOpacity } from 'react-native';
-import { style } from './style';
-import { useNavigation } from '@react-navigation/native';
-
+import {
+  View,
+  Text,
+  Image,
+  TextInput,
+  ImageBackground,
+  TouchableOpacity,
+  Alert,
+} from 'react-native';
+import { globalStyles } from '../../styles/globalStyles';
+import { loginStyles } from './style';
+import { useNavigation } from '@react-navigation/core';
 
 export default function Login() {
   const [usuario, setUsuario] = useState('');
   const [senha, setSenha] = useState('');
-  const navigation = useNavigation(); // hook de navegação
+  const navigation = useNavigation();
+  
 
   return (
     <ImageBackground
       source={require('../../assets/imagemFundo.png')}
-      style={style.container}
+      style={globalStyles.container}
       resizeMode="cover"
     >
-      <View style={[{justifyContent:'center'}]}>
-        <Image source={require('../../assets/logoBeira.png')} style={style.logo} />
+      {/* Logo */}
+      <View style={globalStyles.logoContainer}>
+        <Image
+          source={require('../../assets/logoBeira.png')}
+          style={[globalStyles.logo, { borderRadius: 150 }]}
+        />
       </View>
 
+      {/* Campo Usuário */}
       <View>
-        <Image source={require('../../assets/usuario.png')} style={style.icon} />
+        <Image source={require('../../assets/usuario.png')} style={loginStyles.icon} />
         <TextInput
           placeholder="USUÁRIO"
           value={usuario}
           onChangeText={setUsuario}
-          style={style.input}
+          style={globalStyles.input}
           placeholderTextColor="white"
         />
       </View>
 
+      {/* Campo Senha */}
       <View>
-        <Image source={require('../../assets/senha.png')} style={style.icon2} />
+        <Image source={require('../../assets/senha.png')} style={loginStyles.icon} />
         <TextInput
           placeholder="SENHA"
           value={senha}
           onChangeText={setSenha}
-          style={style.input}
+          style={globalStyles.input}
           secureTextEntry
           placeholderTextColor="white"
         />
       </View>
 
-      <View>
-         <TouchableOpacity 
-    onPress={() => navigation.navigate('RecuperarSenha')}
-    activeOpacity={0.7} 
->
-    <Text style={style.textos}>Esqueci minha senha</Text>
-</TouchableOpacity> 
-      </View>
+      {/* Link Esqueci minha senha */}
+      <TouchableOpacity onPress={() => navigation.navigate('RecuperarSenha')}>
+        <Text style={loginStyles.forgotPassword}>Esqueci minha senha</Text>
+      </TouchableOpacity>
 
+      {/* Botões */}
       <View>
-        <TouchableOpacity style={style.botoes}>
-          <Text style={style.botaoTexto}>LOGIN</Text>
+        <TouchableOpacity
+          style={globalStyles.button}
+          onPress={() => navigation.navigate('DrawerRoutes')}
+          activeOpacity={0.8}
+        >
+          <Text style={globalStyles.buttonText}>LOGIN</Text>
         </TouchableOpacity>
 
-    <TouchableOpacity 
-    style={style.botoes} 
-    onPress={() => navigation.navigate('Cadastro')}
-    activeOpacity={0.7} // efeito visual ao tocar
->
-    <Text style={style.botaoTexto}>CRIAR CONTA</Text>
-</TouchableOpacity>
-        
+        <TouchableOpacity
+          style={globalStyles.button}
+          onPress={() => navigation.navigate('Cadastro')}
+          activeOpacity={0.8}
+        >
+          <Text style={globalStyles.buttonText}>CRIAR CONTA</Text>
+        </TouchableOpacity>
       </View>
     </ImageBackground>
   );
