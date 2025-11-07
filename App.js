@@ -24,7 +24,7 @@ function DrawerRoutes() {
   return (
     <View style={{ flex: 1 }}>
       <Drawer.Navigator
-        initialRouteName="ControleProduto"
+        initialRouteName="Controle Produto"
         screenOptions={{
           headerShown: false,
           drawerType: isLargeScreen ? 'permanent' : 'front',
@@ -32,7 +32,7 @@ function DrawerRoutes() {
           drawerStyle: { width: isLargeScreen ? 240 : '70%' },
         }}
       >
-        <Drawer.Screen name="ControleProduto" component={ControleProduto} />
+        <Drawer.Screen name="Controle Produto" component={ControleProduto} />
         
       </Drawer.Navigator>
     </View>

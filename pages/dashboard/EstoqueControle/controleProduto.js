@@ -162,6 +162,8 @@ const controleProdutoStyles = StyleSheet.create({
   },
   botaoFiltro: {
     padding: 5,
+    backgroundColor:'#107CE0',
+    borderRadius: 8,
   },
   acoesHeader: {
     flexDirection: 'row',

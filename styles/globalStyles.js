@@ -83,17 +83,24 @@ export const globalStyles = StyleSheet.create({
     color: 'white',
     textAlign: 'left',
   },
-  barraControleProdutos:{
-    backgroundColor: "#107CE0",
-    flexDirection: "row",
-    padding: 20,
-    width: '90%',
-  }, 
-  textoBarra: {
-    flexDirection: 'row',
-    marginRight: 125
-    
-  },
+ barraControleProdutos: {
+  backgroundColor: "#107CE0",
+  flexDirection: "row",
+  justifyContent: "space-between", 
+  alignItems: "center",
+  paddingHorizontal: 20,
+  paddingVertical: 15,
+  width: "90%",
+  borderRadius: 10,
+},
+
+textoBarra: {
+  color: "white",
+  fontFamily: "Montserrat-Regular",
+  fontSize: 16,
+  flex: 1, 
+  textAlign: "center", 
+},
   tituloPaginas: {
     color: "#107CE0",
     fontSize: 50,
